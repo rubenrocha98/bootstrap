@@ -1,5 +1,4 @@
 package org.academiadecodigo.apiores;
 
-public enum Ability {
-
+public class Main {
 }

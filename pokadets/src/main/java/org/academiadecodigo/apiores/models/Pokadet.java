@@ -1,4 +1,4 @@
-package org.academiadecodigo.apiores;
+package org.academiadecodigo.apiores.models;
 
 public interface Pokadet {
 
