@@ -3,6 +3,8 @@ package org.academiadecodigo.apiores.server;
 import org.academiadecodigo.apiores.controllers.PokadetController;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
+import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
+import org.academiadecodigo.bootcamp.scanners.string.StringSetInputScanner;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -95,8 +97,12 @@ public class Server {
             }
 
             //gameOver
-            
 
+            MenuInputScanner finalMenu = new MenuInputScanner(new String[]{"Yes","No"});
+
+            menuInputScanner.setMessage(pokadetController.getWinner().getName() + " won! Restart?");
+
+            prompt.getUserInput(finalMenu);
 
 
 
