@@ -67,4 +67,9 @@ public class PokadetService {
     public String[] getAbilities(){
         return Messages.abilitiesMenu(currentPokadet);
     }
+
+    public String getInfo(){
+        return Messages.pokadetInfo(currentPokadet);
+    }
 }
+

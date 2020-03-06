@@ -8,9 +8,9 @@ import java.util.Map;
 
 public class Messages {
 
-    private static String winnerAscci;
-    private static String player1Ascci;
-    private static String player2Ascci;
+    private static String winnerAscci="";
+    private static String player1Ascci="";
+    private static String player2Ascci="";
 
 
     public final static String ABILITY_TO_USE = "\nWhat ability do you want to use?";
@@ -24,7 +24,7 @@ public class Messages {
             "██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝  \n" +
             "╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗\n" +
             " ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝\n\n" +
-            "Select your player:\n";
+            "Choose your Pokadet!\n";
 
     public final static String ASCCI_VS_ASCCI = player1Ascci + "   " +
             ":::     :::  ::::::::      \n" +
@@ -36,7 +36,6 @@ public class Messages {
             "    ###      ########  ### " + player2Ascci;
 ;
 
-    public final static String ABILITY_SELECTION = " select your move:"; // Vai ter nome do Pokadet antes desta String
 
     public final static String WINNER = " you                       ### \n" +
             " #    #  ####  #    # ### \n" +

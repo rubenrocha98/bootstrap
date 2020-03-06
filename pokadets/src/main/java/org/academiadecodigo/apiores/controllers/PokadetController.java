@@ -84,4 +84,8 @@ public class PokadetController {
         return pokadetService.getAbilities();
 
     }
+
+    public String getInfo(){
+        return pokadetService.getInfo();
+    }
 }
