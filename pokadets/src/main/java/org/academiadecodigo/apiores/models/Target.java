@@ -1,4 +1,7 @@
 package org.academiadecodigo.apiores.models;
 
-public enum TARGET {
+public enum Target {
+
+    SELF,
+    ENEMY
 }
