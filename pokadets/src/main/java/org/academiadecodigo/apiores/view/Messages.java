@@ -1,6 +1,9 @@
 package org.academiadecodigo.apiores.view;
 
+import org.academiadecodigo.apiores.models.Ability;
 import org.academiadecodigo.apiores.models.cadets.Pokadet;
+
+import java.util.Map;
 
 public class Messages {
 
@@ -10,7 +13,15 @@ public class Messages {
 
 
     public static String[]abilitiesMenu(Pokadet pokadet){
-        return null;
+
+        Map<Integer, Ability> abilities = pokadet.getAbilities();
+
+        String[] abilitiesString = new String[abilities.size()];
+
+        for (int i = 0; i<abilities.size(); i++){
+            abilitiesString[i]=abilities.get(i).getName();
+        }
+        return abilitiesString;
     }
 
     public static String pokadetInfo(Pokadet pokadet){
