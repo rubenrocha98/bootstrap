@@ -4,6 +4,7 @@ import org.academiadecodigo.apiores.controllers.PokadetController;
 import org.academiadecodigo.apiores.models.Ability;
 import org.academiadecodigo.apiores.models.Target;
 import org.academiadecodigo.apiores.models.cadets.Pokadet;
+import org.academiadecodigo.apiores.view.Messages;
 
 public class PokadetService {
 
@@ -61,5 +62,9 @@ public class PokadetService {
 
     public void setPokadetController(PokadetController pokadetController) {
         this.pokadetController = pokadetController;
+    }
+
+    public String[] getAbilities(){
+        return Messages.abilitiesMenu(currentPokadet);
     }
 }

@@ -86,7 +86,7 @@ public class Messages {
         return "Hp: "+pokadet.getHp();
     }
 
-    public String[] pokadetMenu (Map<Integer,Pokadet> map){
+    public static String[] pokadetMenu (Map<Integer,Pokadet> map){
 
         String[] pokadetsString = new String[map.size()];
 

@@ -9,11 +9,10 @@ public abstract class AbstractPokadet implements Pokadet {
 
     protected Map<Integer, Ability> abilities;
     protected int hp;
-    protected boolean alive;
     protected String name;
 
     public boolean isAlive() {
-        return alive;
+        return hp>0;
     }
 
     public Ability getAbility(int skill) {
@@ -26,11 +25,13 @@ public abstract class AbstractPokadet implements Pokadet {
 
     public void setHp(int hp) {
         this.hp = hp;
+
     }
 
 
     public void setAbilities(Ability ability1, Ability ability2, Ability ability3, Ability ability4) {
-        abilities = new HashMap<Integer, Ability>();
+
+        abilities = new HashMap<>();
 
         abilities.put(1, ability1);
         abilities.put(2, ability2);
