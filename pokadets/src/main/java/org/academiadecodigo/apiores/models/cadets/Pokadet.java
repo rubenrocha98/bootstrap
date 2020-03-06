@@ -11,4 +11,6 @@ public interface Pokadet {
     void setHp(int hp);
 
     int getHp();
+
+    String getName();
 }

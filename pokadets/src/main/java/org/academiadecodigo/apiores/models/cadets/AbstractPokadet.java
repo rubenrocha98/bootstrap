@@ -28,6 +28,7 @@ public abstract class AbstractPokadet implements Pokadet {
         this.hp = hp;
     }
 
+
     public void setAbilities(Ability ability1, Ability ability2, Ability ability3, Ability ability4) {
         abilities = new HashMap<Integer, Ability>();
 
@@ -35,5 +36,11 @@ public abstract class AbstractPokadet implements Pokadet {
         abilities.put(2, ability2);
         abilities.put(3, ability3);
         abilities.put(4, ability4);
+    }
+
+
+    @Override
+    public String getName() {
+        return name;
     }
 }
