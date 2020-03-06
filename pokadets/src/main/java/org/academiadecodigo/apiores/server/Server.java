@@ -3,10 +3,16 @@ package org.academiadecodigo.apiores.server;
 import org.academiadecodigo.apiores.controllers.PokadetController;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
+import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
+import org.academiadecodigo.bootcamp.scanners.string.StringSetInputScanner;
 
-import java.io.*;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
@@ -19,6 +25,14 @@ public class Server {
     private ServerSocket serverSocket = null;
     private List<PlayerManager> dataList;
     private PokadetController pokadetController;
+    private HashMap<Integer, Integer> playerOption;
+    private HashMap<Socket, Integer> socketMap;
+
+
+    public Server() {
+        dataList = new CopyOnWriteArrayList<>();
+        socketMap = new HashMap<>();
+    }
 
     public static void main(String[] args) {
         Server server = new Server();
@@ -29,15 +43,11 @@ public class Server {
         this.pokadetController = pokadetController;
     }
 
-    public Server() {
-        dataList = new CopyOnWriteArrayList<>();
-    }
-
-
     private void init() {
         try {
 
             serverSocket = new ServerSocket(PORT);
+
             listen();
 
 
@@ -48,38 +58,54 @@ public class Server {
 
 
     private void serve(Socket clientSocket) {
-        PrintStream out=null;
+
+        PrintStream out = null;
         InputStream in = null;
-        MenuInputScanner menuInputScanner = new MenuInputScanner(new String[]{"abc","def","gsdag"});
+
+        MenuInputScanner menuInputScanner = new MenuInputScanner(new String[]{"abc", "def", "gsdag"});
+
+
         try {
             in = new DataInputStream(clientSocket.getInputStream());
             out = new PrintStream(clientSocket.getOutputStream(), true);
-            Thread.currentThread().setName("Client-" + Thread.currentThread().getId());
+            Prompt prompt = new Prompt(in, out);
             dataList.add(new PlayerManager(clientSocket));
 
-            Prompt prompt = new Prompt(in,out);
-            int received;
+            //Player Pick
+            int playerPick = prompt.getUserInput(menuInputScanner);
+
+            playerOption.put(socketMap.get(clientSocket), playerPick);
+
+            if (playerOption.size() < 2) {
+                wait();
+            }
+            notifyAll();
+
+            setPlayers();
 
 
-            while (clientSocket.isBound()) {
+            //fight
+            while (pokadetController.isGameOver()) {
+                notifyAll();
+                wait();
+                    int abilityPick = prompt.getUserInput(menuInputScanner);
 
-                int i = prompt.getUserInput(menuInputScanner);
+                    pokadetController.init(socketMap.get(clientSocket), abilityPick);
+                notifyAll();
 
-
-                System.out.println(i);
-               /* System.out.println(received);
-                for (ClientManager clientManager : dataList) {
-                    if (Thread.currentThread().getName().equals(clientManager.getName())) {
-                        continue;
-                    }
-
-                    clientManager.dispatch(Thread.currentThread().getName() + ": " + received);
-                }*/
+                System.out.println(abilityPick);
             }
 
+            //gameOver
 
-            System.out.println(Thread.currentThread().getName() + " disconnected");
-            clientSocket.close();
+            MenuInputScanner finalMenu = new MenuInputScanner(new String[]{"Yes","No"});
+
+            menuInputScanner.setMessage(pokadetController.getWinner().getName() + " won! Restart?");
+
+            prompt.getUserInput(finalMenu);
+
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -94,10 +120,17 @@ public class Server {
     }
 
     private void listen() {
-        ExecutorService executorService = Executors.newFixedThreadPool(1);
+
+        int playerId = 1;
+
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
         while (true) {
             try {
                 Socket clientSocket = serverSocket.accept();
+
+                socketMap.put(clientSocket, playerId);
+                playerId++;
+
 
                 executorService.submit(new serverThread(clientSocket));
                 System.out.println("New Client connected");
@@ -109,23 +142,25 @@ public class Server {
         }
     }
 
+    public void setPlayers() {
 
+        pokadetController.addPokadets(playerOption.get(1), playerOption.get(2));
 
+    }
 
 
     private class serverThread implements Runnable {
-        private Socket clientSocket;
+        private Socket playerSocket;
 
-        public serverThread(Socket clientSocket) {
-            this.clientSocket = clientSocket;
+        public serverThread(Socket playerSocket) {
+            this.playerSocket = playerSocket;
         }
 
         @Override
         public void run() {
-            serve(clientSocket);
+            serve(playerSocket);
         }
     }
-
 
 
 }
