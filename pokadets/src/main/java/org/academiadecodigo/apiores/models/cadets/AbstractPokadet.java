@@ -30,7 +30,8 @@ public abstract class AbstractPokadet implements Pokadet {
 
 
     public void setAbilities(Ability ability1, Ability ability2, Ability ability3, Ability ability4) {
-        abilities = new HashMap<Integer, Ability>();
+
+        abilities = new HashMap<>();
 
         abilities.put(1, ability1);
         abilities.put(2, ability2);

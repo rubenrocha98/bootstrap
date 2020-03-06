@@ -61,4 +61,9 @@ public class PokadetController {
     public Pokadet getWinner() {
         return winner;
     }
+
+
+    public String [] pokadetsNames(){
+        pokadetMap.keySet().
+    }
 }

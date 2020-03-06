@@ -14,6 +14,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -23,7 +24,6 @@ public class Server {
     public static final int PORT = 8000;
 
     private ServerSocket serverSocket = null;
-    private List<PlayerManager> dataList;
     private PokadetController pokadetController;
     private HashMap<Integer, Integer> playerOption;
     private HashMap<Socket, Integer> socketMap;
@@ -31,7 +31,6 @@ public class Server {
 
     public Server() {
 
-        dataList = new CopyOnWriteArrayList<>();
         socketMap = new HashMap<>();
         playerOption = new HashMap<>();
     }
@@ -60,14 +59,13 @@ public class Server {
         PrintStream out = null;
         InputStream in = null;
 
-        MenuInputScanner menuInputScanner = new MenuInputScanner(new String[]{"abc", "def", "gsdag"});
+        MenuInputScanner menuInputScanner = new MenuInputScanner(new String[]{});
 
 
         try {
             in = new DataInputStream(clientSocket.getInputStream());
             out = new PrintStream(clientSocket.getOutputStream(), true);
             Prompt prompt = new Prompt(in, out);
-            dataList.add(new PlayerManager(clientSocket));
 
             //Player Pick
             int playerPick = prompt.getUserInput(menuInputScanner);
