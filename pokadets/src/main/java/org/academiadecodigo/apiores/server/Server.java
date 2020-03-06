@@ -59,14 +59,24 @@ public class Server {
         PrintStream out = null;
         InputStream in = null;
 
+        MenuInputScanner menuInputScanner0 = new MenuInputScanner(Messages.open_menu());
+        menuInputScanner0.setMessage(Messages.WELCOME);
+
         MenuInputScanner menuInputScanner = new MenuInputScanner(pokadetController.getPokadetOptions());
-        menuInputScanner.setMessage(Messages.WELCOME);
+        menuInputScanner.setMessage(Messages.CHOOSE_PLAYER);
 
         try {
             in = new DataInputStream(clientSocket.getInputStream());
             out = new PrintStream(clientSocket.getOutputStream(), true);
             Prompt prompt = new Prompt(in, out);
 
+            int playerPick0 = prompt.getUserInput(menuInputScanner0);
+
+            //quit Game
+            if (playerPick0 ==2){
+                System.out.println(Messages.QUIT);
+                out.println(Messages.QUIT);
+                System.exit(0);}
 
 
 
@@ -76,17 +86,19 @@ public class Server {
             playerOption.put(socketMap.get(clientSocket), playerPick);
 
             if(playerOption.size()<2){
-                System.out.println("Waiting for player 2");
+                out.println(Messages.WAITING_PLAYER);
+                System.out.println(Messages.WAITING_PLAYER);
             }
             while(playerOption.size() <2){
                 System.out.print("");
             }
             setPlayers();
 
+            //fight
             while (!pokadetController.isGameOver()) {
                 synchronized (this) {
                     notifyAll();
-                    out.println("Waiting for oponent...");
+                    out.println(Messages.WAITING_OPONENT);
                     wait();
                     MenuInputScanner abilities = new MenuInputScanner(pokadetController.getAbilitiesOptions(socketMap.get(clientSocket)));
                     abilities.setMessage(pokadetController.getInfo()+Messages.ABILITY_TO_USE);
@@ -105,7 +117,7 @@ public class Server {
 
             MenuInputScanner finalMenu = new MenuInputScanner(Messages.restartMenu());
 
-            menuInputScanner.setMessage(pokadetController.getWinner().getName() + " won! Restart?");
+            menuInputScanner.setMessage(pokadetController.getWinner().getName() + Messages.WINNER);
 
             prompt.getUserInput(finalMenu);
 
