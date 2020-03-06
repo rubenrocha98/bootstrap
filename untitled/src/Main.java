@@ -10,6 +10,8 @@ public class Main {
                 "╚═╝      ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝   ╚═╝   ╚══════╝\n" +
                 "                                                                  ");
 */
+
+
         System.out.println("\n"+
                 "       #    #  ####  #    # ### \n" +
                 "       #    # #    # ##   # ### \n" +
@@ -36,6 +38,19 @@ public class Main {
                 "       ███████╗╚██████╔╝███████║   ██║██╗██╗██╗\n" +
                 " You   ╚══════╝ ╚═════╝ ╚══════╝   ╚═╝╚═╝╚═╝╚═╝   Restart?\n" +
                 "                                        ");
+
+        String hello = "hello";
+
+        for (int i=0; i< hello.length(); i++){
+
+            try {
+                Thread.sleep(1000);
+                System.out.print(hello.charAt(i));
+                ;
+            } catch (InterruptedException e){
+                System.out.println("not working");
+            }
+        }
 }
 
 

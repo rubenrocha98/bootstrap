@@ -7,15 +7,14 @@ import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 import org.academiadecodigo.bootcamp.scanners.string.StringSetInputScanner;
 
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.Time;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -59,14 +58,27 @@ public class Server {
         PrintStream out = null;
         InputStream in = null;
 
+        MenuInputScanner menuInputScanner0 = new MenuInputScanner(Messages.open_menu());
+        menuInputScanner0.setMessage(Messages.CHOOSE_PLAYER);
+
+
         MenuInputScanner menuInputScanner = new MenuInputScanner(pokadetController.getPokadetOptions());
-        menuInputScanner.setMessage(Messages.WELCOME);
+        menuInputScanner.setMessage(Messages.CHOOSE_PLAYER);
 
         try {
             in = new DataInputStream(clientSocket.getInputStream());
             out = new PrintStream(clientSocket.getOutputStream(), true);
             Prompt prompt = new Prompt(in, out);
 
+            printWelcomeMessage(out);
+
+            int playerPick0 = prompt.getUserInput(menuInputScanner0);
+
+            //quit Game
+            if (playerPick0 ==2){
+                System.out.println(Messages.QUIT);
+                out.println(Messages.QUIT);
+                System.exit(0);}
 
 
 
@@ -76,17 +88,19 @@ public class Server {
             playerOption.put(socketMap.get(clientSocket), playerPick);
 
             if(playerOption.size()<2){
-                System.out.println("Waiting for player 2");
+                out.println(Messages.WAITING_PLAYER);
+                System.out.println(Messages.WAITING_PLAYER);
             }
             while(playerOption.size() <2){
                 System.out.print("");
             }
             setPlayers();
 
+            //fight
             while (!pokadetController.isGameOver()) {
                 synchronized (this) {
                     notifyAll();
-                    out.println("Waiting for oponent...");
+                    out.println(Messages.WAITING_OPONENT);
                     wait();
                     MenuInputScanner abilities = new MenuInputScanner(pokadetController.getAbilitiesOptions(socketMap.get(clientSocket)));
                     abilities.setMessage(pokadetController.getInfo()+Messages.ABILITY_TO_USE);
@@ -104,8 +118,9 @@ public class Server {
             playerId = 1;
 
             MenuInputScanner finalMenu = new MenuInputScanner(Messages.restartMenu());
+            finalMenu.setMessage("");
 
-            menuInputScanner.setMessage(pokadetController.getWinner().getName() + " won! Restart?");
+            menuInputScanner.setMessage(pokadetController.getWinner().getName() + Messages.WINNER);
 
             prompt.getUserInput(finalMenu);
 
@@ -144,6 +159,21 @@ public class Server {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void printWelcomeMessage(PrintStream out){
+
+        String welcomeMessage = Messages.WELCOME;
+
+        for (int i=0; i< welcomeMessage.length(); i++ ){
+            try {
+                out.print(welcomeMessage.charAt(i));
+                Thread.sleep(0,500);
+            } catch (InterruptedException e){
+                System.err.println("problem printing welcome slowly");
+            }
+        }
+
     }
 
     public synchronized void setPlayers() {

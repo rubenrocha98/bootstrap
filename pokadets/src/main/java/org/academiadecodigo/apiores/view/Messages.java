@@ -13,18 +13,28 @@ public class Messages {
     private static String player2Ascci="";
 
 
+
+    public final static String WAITING_PLAYER = "\nWaiting for player 2...";
+
+    public final static String WAITING_OPONENT = "Waiting for oponent";
+
     public final static String ABILITY_TO_USE = "\nWhat ability do you want to use?";
+
+    public final static String QUIT = "Quiting Game...";
+
+    public final static String RESTART = "\nRestart?";
 
     public final static String INVALID_ABILITY = "";
 
-    public final static String  WELCOME ="\n\n                                  WELCOME\n" +
-            "██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗\n" +
-            "██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝\n" +
-            "██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗  \n" +
-            "██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝  \n" +
-            "╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗\n" +
-            " ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝\n\n" +
-            "Choose your Pokadet!\n";
+    public final static String  WELCOME ="\n\n                                  \n" +
+            "██████╗  ██████╗ ██╗  ██╗ █████╗ ██████╗ ███████╗████████╗███████╗\n" +
+            "██╔══██╗██╔═══██╗██║ ██╔╝██╔══██╗██╔══██╗██╔════╝╚══██╔══╝██╔════╝\n" +
+            "██████╔╝██║   ██║█████╔╝ ███████║██║  ██║█████╗     ██║   ███████╗\n" +
+            "██╔═══╝ ██║   ██║██╔═██╗ ██╔══██║██║  ██║██╔══╝     ██║   ╚════██║\n" +
+            "██║     ╚██████╔╝██║  ██╗██║  ██║██████╔╝███████╗   ██║   ███████║\n" +
+            "╚═╝      ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝   ╚═╝   ╚══════╝\n" ;
+
+    public final static String CHOOSE_PLAYER = "Choose your Pokadet!";
 
     public final static String ASCCI_VS_ASCCI = player1Ascci + "   " +
             ":::     :::  ::::::::      \n" +
@@ -35,19 +45,7 @@ public class Messages {
             "  #+#+#+#   #+#    #+# #+# \n" +
             "    ###      ########  ### " + player2Ascci;
 ;
-
-
-    public final static String WINNER = " you                       ### \n" +
-            " #    #  ####  #    # ### \n" +
-            " #    # #    # ##   # ### \n" +
-            " #    # #    # # #  #  #  \n" +
-            " # ## # #    # #  # #     \n" +
-            " ##  ## #    # #   ## ### \n" +
-            " #    #  ####  #    # ### \n" +
-            "\n Restart?";
-
-    
-    public final static String WINNER2 = winnerAscci + ("\n" +
+    public final static String WINNER = winnerAscci + ("\n" +
             "       ██╗    ██╗ ██████╗ ███╗   ██╗██╗\n" +
             "       ██║    ██║██╔═══██╗████╗  ██║██║\n" +
             "       ██║ █╗ ██║██║   ██║██╔██╗ ██║██║\n" +
@@ -68,7 +66,9 @@ public class Messages {
     //ascii generator: https://manytools.org/hacker-tools/ascii-banner/
     //style: banner, font: ANSI Shadow
 
-
+    public static String[] open_menu(){
+        return new String[]{"start", "quit"};
+    }
     public static String[]abilitiesMenu(Pokadet pokadet){
 
         Map<Integer, Ability> abilities = pokadet.getAbilities();
