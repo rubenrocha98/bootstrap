@@ -25,10 +25,9 @@ public class Server {
 
     private ServerSocket serverSocket = null;
     private PokadetController pokadetController;
-    private HashMap<Integer, Integer> playerOption;
-    private HashMap<Socket, Integer> socketMap;
-
-
+    private HashMap<Integer, Integer> playerOption; //currentPlayer , playerOptionAbility
+    private HashMap<Socket, Integer> socketMap; //clientSocker , currentPlayer
+    private int playerId = 1;
     public Server() {
 
         socketMap = new HashMap<>();
@@ -59,7 +58,7 @@ public class Server {
         PrintStream out = null;
         InputStream in = null;
 
-        MenuInputScanner menuInputScanner = new MenuInputScanner(new String[]{});
+        MenuInputScanner menuInputScanner = new MenuInputScanner(pokadetController.getPokadetOptions());
 
 
         try {
@@ -72,27 +71,33 @@ public class Server {
 
             playerOption.put(socketMap.get(clientSocket), playerPick);
 
-            if (playerOption.size() < 2) {
-//                wait();
+            if(playerOption.size()<2){
+                System.out.println("Waiting for player 2");
             }
-          //  notifyAll();
-
+            while(playerOption.size() <2){
+                System.out.print("");
+            }
+            System.out.println(Thread.currentThread().getName());
             setPlayers();
 
+            while (!pokadetController.isGameOver()) {
+                synchronized (this) {
+                    notifyAll();
+                    wait();
+                    MenuInputScanner abilities = new MenuInputScanner(pokadetController.getAbilitiesOptions(socketMap.get(clientSocket)));
 
-            //fight
-            while (pokadetController.isGameOver()) {
-         //       notifyAll();
-           //     wait();
-                    int abilityPick = prompt.getUserInput(menuInputScanner);
+                    int abilityPick = prompt.getUserInput(abilities);
 
                     pokadetController.init(socketMap.get(clientSocket), abilityPick);
-               // notifyAll();
 
-                System.out.println(abilityPick);
+                    System.out.println(abilityPick);
+                    notifyAll();
+                }
             }
 
             //gameOver
+
+            playerId = 1;
 
             MenuInputScanner finalMenu = new MenuInputScanner(new String[]{"Yes","No"});
 
@@ -117,7 +122,6 @@ public class Server {
 
     private void listen() {
 
-        int playerId = 1;
 
         ExecutorService executorService = Executors.newFixedThreadPool(2);
         while (true) {
@@ -129,7 +133,7 @@ public class Server {
 
 
                 executorService.submit(new serverThread(clientSocket));
-                System.out.println("New Client connected");
+                System.out.println("New Player Connected");
 
 
             } catch (IOException e) {
@@ -138,9 +142,9 @@ public class Server {
         }
     }
 
-    public void setPlayers() {
+    public synchronized void setPlayers() {
 
-        pokadetController.addPokadets(playerOption.get(1), playerOption.get(2));
+        pokadetController.addPokadets(playerOption.get(1),playerOption.get(2));
 
     }
 
