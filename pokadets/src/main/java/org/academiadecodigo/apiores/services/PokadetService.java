@@ -16,14 +16,13 @@ public class PokadetService {
 
     public void hit(int abilityPick) {
         Ability ability = currentPokadet.getAbility(abilityPick);
+
         if (ability.getTarget().equals(Target.SELF)) {
             currentPokadet.setHp(currentPokadet.getHp() + ability.getAmount());
             return;
         }
-        if (ability.getTarget().equals(Target.ENEMY)) {
-            targetPokadet.setHp(targetPokadet.getHp() - ability.getAmount());
-            return;
-        }
+        chooseTargetPokadet();
+        targetPokadet.setHp(targetPokadet.getHp() - ability.getAmount());
     }
 
     private void chooseTargetPokadet() {
