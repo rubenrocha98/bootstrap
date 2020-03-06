@@ -94,7 +94,7 @@ public class Server {
     }
 
     private void listen() {
-        ExecutorService executorService = Executors.newFixedThreadPool(1);
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
         while (true) {
             try {
                 Socket clientSocket = serverSocket.accept();
