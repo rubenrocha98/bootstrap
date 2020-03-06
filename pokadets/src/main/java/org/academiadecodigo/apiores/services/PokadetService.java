@@ -2,20 +2,20 @@ package org.academiadecodigo.apiores.services;
 
 import org.academiadecodigo.apiores.models.Pokadet;
 
-public class CodeCadetServices {
+public class PokadetService {
 
     Pokadet pokadet1;
     Pokadet pokadet2;
-    Controller controller;
+    PokadetController pokadetController;
 
 
     boolean verifyAlive(){
         if(!pokadet1.isAlive()){
-            controller.setLoser(pokadet1);
+            pokadetController.setLoser(pokadet1);
             return  false;
         }
         if(!pokadet2.isAlive){
-            controller.setLoser(pokadet2);
+            pokadetController.setLoser(pokadet2);
             return false;
         }
         return true;
@@ -30,7 +30,7 @@ public class CodeCadetServices {
         this.pokadet2 = pokadet2;
     }
 
-    public void setController(Controller controller) {
-        this.controller = controller;
+    public void setPokadetController(PokadetController pokadetController) {
+        this.pokadetController = pokadetController;
     }
 }
