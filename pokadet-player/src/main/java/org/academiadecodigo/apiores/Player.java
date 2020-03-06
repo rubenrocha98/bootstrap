@@ -17,6 +17,7 @@ public class Player {
     private Socket clientSocket = null;
     private BufferedReader in;
     private PrintWriter out;
+    private Scanner scanner;
     private Prompt prompt;
     private String host;
     private int port;
@@ -51,19 +52,22 @@ public class Player {
                 out.println(choice);
             }
 
+            close(scanner);
+            close(clientSocket);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void readFromServer (BufferedReader in) throws IOException {
+    private void readFromServer(BufferedReader in) throws IOException {
 
         while (clientSocket.isBound()) {
             System.out.println(in.readLine());
         }
     }
 
-    private void getPlayerInput () {
+    private void getPlayerInput() {
 
         prompt = new Prompt(System.in, System.out);
 
@@ -77,11 +81,24 @@ public class Player {
     }
 
     private String getChoice() {
-        Scanner scanner = new Scanner(System.in);
-
+        scanner = new Scanner(System.in);
         return scanner.next();
     }
 
+    private void close(Closeable closeable) {
+
+        if (closeable == null) {
+            return;
+        }
+
+        try {
+            closeable.close();
+        } catch (IOException e) {
+            System.err.println("Error closing stream: " + e.getMessage());
+        }
+    }
+
+    //Runnable class
     public class ReadFromServer implements Runnable {
 
         public void run() {
