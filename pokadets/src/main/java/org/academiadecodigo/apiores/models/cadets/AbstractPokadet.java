@@ -38,6 +38,9 @@ public abstract class AbstractPokadet implements Pokadet {
         abilities.put(4, ability4);
     }
 
+    public Map<Integer, Ability> getAbilities() {
+        return abilities;
+    }
 
     @Override
     public String getName() {
