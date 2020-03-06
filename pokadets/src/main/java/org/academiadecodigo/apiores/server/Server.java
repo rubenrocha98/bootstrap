@@ -85,6 +85,10 @@ public class Server {
             //Player Pick
             int playerPick = prompt.getUserInput(menuInputScanner);
 
+            // Checking player Picked
+            checkPlayers(prompt, playerPick);
+
+
             playerOption.put(socketMap.get(clientSocket), playerPick);
 
             if(playerOption.size()<2){
@@ -173,6 +177,14 @@ public class Server {
                 System.err.println("problem printing welcome slowly");
             }
         }
+
+    }
+
+    private void checkPlayers(Prompt prompt, int playerPick){
+
+
+
+
 
     }
 
