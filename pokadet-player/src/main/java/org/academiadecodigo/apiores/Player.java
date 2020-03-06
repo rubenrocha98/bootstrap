@@ -3,14 +3,12 @@ package org.academiadecodigo.apiores;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.integer.IntegerInputScanner;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
-import sun.nio.ch.ThreadPool;
 
 import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
 
 public class Player {
 
