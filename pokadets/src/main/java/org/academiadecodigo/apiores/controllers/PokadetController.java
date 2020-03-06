@@ -1,6 +1,6 @@
 package org.academiadecodigo.apiores.controllers;
 
-import org.academiadecodigo.apiores.models.Pokadet;
+import org.academiadecodigo.apiores.models.cadets.Pokadet;
 import org.academiadecodigo.apiores.services.PokadetService;
 
 import java.util.Map;

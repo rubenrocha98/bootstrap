@@ -1,7 +1,7 @@
 package org.academiadecodigo.apiores.services;
 
 import org.academiadecodigo.apiores.controllers.PokadetController;
-import org.academiadecodigo.apiores.models.Pokadet;
+import org.academiadecodigo.apiores.models.cadets.Pokadet;
 
 public class PokadetService {
 
@@ -15,7 +15,7 @@ public class PokadetService {
             pokadetController.setLoser(pokadet1);
             return  false;
         }
-        if(!pokadet2.isAlive){
+        if(!pokadet2.isAlive()){
             pokadetController.setLoser(pokadet2);
             return false;
         }
