@@ -9,6 +9,9 @@ import java.util.Map;
 public class Messages {
 
     private static String winnerAscci;
+    private static String player1Ascci;
+    private static String player2Ascci;
+
 
     public final static String ABILITY_TO_USE = "\nWhat ability do you want to use?";
 
@@ -22,6 +25,16 @@ public class Messages {
             "╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗\n" +
             " ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝\n\n" +
             "Select your player:\n";
+
+    public final static String ASCCI_VS_ASCCI = player1Ascci + "   " +
+            ":::     :::  ::::::::      \n" +
+            ":+:     :+: :+:    :+:     \n" +
+            "+:+     +:+ +:+            \n" +
+            "+#+     +:+ +#++:++#++     \n" +
+            " +#+   +#+         +#+     \n" +
+            "  #+#+#+#   #+#    #+# #+# \n" +
+            "    ###      ########  ### " + player2Ascci;
+;
 
     public final static String ABILITY_SELECTION = " select your move:"; // Vai ter nome do Pokadet antes desta String
 
@@ -89,9 +102,15 @@ public class Messages {
         return new String[]{"Yes", "No"};
     }
 
-    public static void setWinnerAscci(String string){
-        winnerAscci = string;
+    public static void setWinnerAscci(String winnerAscci){
+        Messages.winnerAscci = winnerAscci;
     }
 
+    public static void setPlayer1Ascci(String player1Ascci) {
+        Messages.player1Ascci = player1Ascci;
+    }
 
+    public static void setPlayer2Ascci(String player2Ascci) {
+        Messages.player2Ascci = player2Ascci;
+    }
 }
