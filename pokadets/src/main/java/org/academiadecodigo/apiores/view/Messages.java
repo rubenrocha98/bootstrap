@@ -22,6 +22,8 @@ public class Messages {
 
     public final static String QUIT = "Quiting Game...";
 
+    public final static String RESTART = "\nRestart?";
+
     public final static String INVALID_ABILITY = "";
 
     public final static String  WELCOME ="\n\n                                  \n" +

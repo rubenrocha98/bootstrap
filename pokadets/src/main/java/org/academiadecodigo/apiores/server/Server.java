@@ -13,9 +13,11 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.Time;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -62,6 +64,7 @@ public class Server {
         MenuInputScanner menuInputScanner0 = new MenuInputScanner(Messages.open_menu());
         menuInputScanner0.setMessage(Messages.WELCOME);
 
+
         MenuInputScanner menuInputScanner = new MenuInputScanner(pokadetController.getPokadetOptions());
         menuInputScanner.setMessage(Messages.CHOOSE_PLAYER);
 
@@ -69,6 +72,7 @@ public class Server {
             in = new DataInputStream(clientSocket.getInputStream());
             out = new PrintStream(clientSocket.getOutputStream(), true);
             Prompt prompt = new Prompt(in, out);
+
 
             int playerPick0 = prompt.getUserInput(menuInputScanner0);
 
@@ -116,6 +120,7 @@ public class Server {
             playerId = 1;
 
             MenuInputScanner finalMenu = new MenuInputScanner(Messages.restartMenu());
+            finalMenu.setMessage("");
 
             menuInputScanner.setMessage(pokadetController.getWinner().getName() + Messages.WINNER);
 
