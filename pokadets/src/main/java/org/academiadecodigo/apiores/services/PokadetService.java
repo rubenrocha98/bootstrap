@@ -36,11 +36,11 @@ public class PokadetService {
 
     public boolean verifyAlive() {
         if (!pokadet1.isAlive()) {
-            pokadetController.setLoser(pokadet1);
+            pokadetController.setWinner(pokadet2);
             return false;
         }
         if (!pokadet2.isAlive()) {
-            pokadetController.setLoser(pokadet2);
+            pokadetController.setWinner(pokadet1);
             return false;
         }
         return true;
