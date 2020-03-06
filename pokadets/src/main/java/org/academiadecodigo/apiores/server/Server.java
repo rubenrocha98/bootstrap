@@ -7,10 +7,7 @@ import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 import org.academiadecodigo.bootcamp.scanners.string.StringSetInputScanner;
 
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.Time;
@@ -62,7 +59,7 @@ public class Server {
         InputStream in = null;
 
         MenuInputScanner menuInputScanner0 = new MenuInputScanner(Messages.open_menu());
-        menuInputScanner0.setMessage(Messages.WELCOME);
+        menuInputScanner0.setMessage(Messages.CHOOSE_PLAYER);
 
 
         MenuInputScanner menuInputScanner = new MenuInputScanner(pokadetController.getPokadetOptions());
@@ -73,6 +70,7 @@ public class Server {
             out = new PrintStream(clientSocket.getOutputStream(), true);
             Prompt prompt = new Prompt(in, out);
 
+            printWelcomeMessage(out);
 
             int playerPick0 = prompt.getUserInput(menuInputScanner0);
 
@@ -161,6 +159,21 @@ public class Server {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void printWelcomeMessage(PrintStream out){
+
+        String welcomeMessage = Messages.WELCOME;
+
+        for (int i=0; i< welcomeMessage.length(); i++ ){
+            try {
+                out.print(welcomeMessage.charAt(i));
+                Thread.sleep(0,500);
+            } catch (InterruptedException e){
+                System.err.println("problem printing welcome slowly");
+            }
+        }
+
     }
 
     public synchronized void setPlayers() {
