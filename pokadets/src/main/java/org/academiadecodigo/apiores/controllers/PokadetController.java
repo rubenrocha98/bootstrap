@@ -1,17 +1,23 @@
 package org.academiadecodigo.apiores.controllers;
 
 import org.academiadecodigo.apiores.models.Pokadet;
+import org.academiadecodigo.apiores.services.PokadetService;
+
+import java.util.Map;
 
 public class PokadetController {
 
     private Pokadet loser;
-    private PokadetService service;
-    public void init(){
+    private PokadetService pokadetService;
+    private Map<Integer,Pokadet> pokadetMap;
 
+    public void init(int player1, int player2){
 
-        while(true){
+        while(pokadetService.verifyAlive()){
+
 
         }
+
     }
 
 
@@ -20,8 +26,13 @@ public class PokadetController {
     }
 
 
-    public void setService(PokadetService service) {
-        this.service = service;
+    public void setPokadetService(PokadetService pokadetService) {
+        this.pokadetService = pokadetService;
     }
+
+    public void setPokadetMap(Map<Integer, Pokadet> pokadetMap) {
+        this.pokadetMap = pokadetMap;
+    }
+
 
 }

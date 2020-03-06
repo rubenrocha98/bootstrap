@@ -1,5 +1,6 @@
 package org.academiadecodigo.apiores.services;
 
+import org.academiadecodigo.apiores.controllers.PokadetController;
 import org.academiadecodigo.apiores.models.Pokadet;
 
 public class PokadetService {
@@ -9,7 +10,7 @@ public class PokadetService {
     PokadetController pokadetController;
 
 
-    boolean verifyAlive(){
+    public boolean verifyAlive(){
         if(!pokadet1.isAlive()){
             pokadetController.setLoser(pokadet1);
             return  false;
