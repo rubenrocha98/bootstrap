@@ -86,6 +86,13 @@ public class PokadetController {
 
     }
 
+    public void setCurrentPokadet(int currentPlayerId){
+        if(currentPlayerId==1) {
+            pokadetService.setCurrentPokadet(pokadetMap.get(pokadetId1));
+        }else{
+            pokadetService.setCurrentPokadet(pokadetMap.get(pokadetId2));
+        }
+    }
     public String getPokadetInfo(int pokadetId){
         Pokadet pokadet = this.pokadetMap.get(pokadetId);
         return pokadetService.getPokadetInfo(pokadet);

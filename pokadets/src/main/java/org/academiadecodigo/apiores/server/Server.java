@@ -105,6 +105,7 @@ public class Server {
             prompt.getUserInput(finalMenu);
 
         } catch (Exception e) {
+            e.printStackTrace();
             System.err.println("\nPlayer Disconected");
         }
         try {
@@ -174,10 +175,10 @@ public class Server {
 
     }
 
-    private void chooseTrainer(Prompt prompt) {
+    private void chooseTrainer(Prompt prompt,Socket clientSocket) {
 
         int choice = prompt.getUserInput(Scanners.getTrainersMenu());
-
+        pokadetController.setCurrentPokadet(socketMap.get(clientSocket));
         pokadetController.pickTrainer(choice);
     }
 
@@ -230,13 +231,14 @@ public class Server {
             out.println(Messages.WAITING_PLAYER);
             System.out.println(Messages.WAITING_PLAYER);
         }
+
         while(playerOption.size() <2){
             System.out.print("");
         }
 
         setPlayers();
 
-        chooseTrainer(prompt);
+        chooseTrainer(prompt,clientSocket);
 
     }
 
