@@ -4,13 +4,15 @@ import org.academiadecodigo.apiores.controllers.PokadetController;
 import org.academiadecodigo.apiores.models.Ability;
 import org.academiadecodigo.apiores.models.Target;
 import org.academiadecodigo.apiores.models.cadets.Pokadet;
+import org.academiadecodigo.apiores.models.trainers.BoostType;
+import org.academiadecodigo.apiores.models.trainers.Trainer;
 import org.academiadecodigo.apiores.view.Messages;
 
 public class PokadetService {
 
-    Pokadet pokadet1;
-    Pokadet pokadet2;
-    PokadetController pokadetController;
+    private Pokadet pokadet1;
+    private Pokadet pokadet2;
+    private PokadetController pokadetController;
     private Pokadet currentPokadet;
     private Pokadet targetPokadet;
 
@@ -23,7 +25,22 @@ public class PokadetService {
             return;
         }
         chooseTargetPokadet();
-        targetPokadet.setHp(targetPokadet.getHp() - ability.getAmount());
+        attack(ability.getAmount());
+    }
+
+    private void attack(int amount){
+        int defense = targetPokadet.getDefense();
+        int damage = amount;
+        if (checkCrit()){
+            damage = (int) Math.floor(amount * 1.2);
+        }
+        damage -= defense;
+        targetPokadet.setHp(targetPokadet.getHp() - damage);
+    }
+
+    private boolean checkCrit(){
+        int random = ((int) (Math.ceil(Math.random()*100)));
+        return random <= currentPokadet.getCritChance();
     }
 
     private void chooseTargetPokadet() {
@@ -47,6 +64,37 @@ public class PokadetService {
         return true;
     }
 
+    public void implementTrainersBoost(Trainer trainer){
+        BoostType boost = trainer.getBoost();
+        int amount = trainer.getAmount();
+        switch (boost){
+            case HP:
+                currentPokadet.setHp(currentPokadet.getHp() + amount);
+                break;
+            case ATTACK:
+                currentPokadet.setAttack(currentPokadet.getAttack() + amount);
+                break;
+            case DEFENSE:
+                currentPokadet.setDefense(currentPokadet.getDefense() + amount);
+                break;
+            case CRITICAL:
+                currentPokadet.setCritChance(currentPokadet.getCritChance() + amount);
+                break;
+        }
+    }
+
+    public String getStats(){ //NOT IMPLEMENTED YET
+        return new String();
+    }
+
+
+    public String[] getAbilities() {
+        return Messages.abilitiesMenu(currentPokadet);
+    }
+
+    public String getInfo() {
+        return Messages.pokadetInfo(currentPokadet);
+    }
 
     public void setPokadet1(Pokadet pokadet1) {
         this.pokadet1 = pokadet1;
@@ -62,14 +110,6 @@ public class PokadetService {
 
     public void setPokadetController(PokadetController pokadetController) {
         this.pokadetController = pokadetController;
-    }
-
-    public String[] getAbilities(){
-        return Messages.abilitiesMenu(currentPokadet);
-    }
-
-    public String getInfo(){
-        return Messages.pokadetInfo(currentPokadet);
     }
 }
 
