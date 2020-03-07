@@ -60,6 +60,8 @@ public class Server {
             out = new PrintStream(clientSocket.getOutputStream(), true);
             Prompt prompt = new Prompt(in, out);
 
+            playerId++;
+
             socketMap.put(clientSocket, playerId);
 
             beggining(out, prompt, clientSocket);
@@ -119,7 +121,6 @@ public class Server {
                 Socket clientSocket = serverSocket.accept();
 
                 //socketMap.put(clientSocket, playerId);
-                playerId++;
 
 
                 executorService.submit(new ServerThread(clientSocket));
@@ -153,9 +154,9 @@ public class Server {
         //Player Pick
         int playerPick = prompt.getUserInput(menuInputScanner);
 
-        if(playerOption.containsValue(playerPick)) {
+        while (playerOption.containsValue(playerPick)) {
             out.println("Pokadet already picked");
-            playerPick = checkPlayers(prompt, menuInputScanner, out);
+            playerPick = prompt.getUserInput(menuInputScanner);
         }
 
         String pokadetStats = pokadetController.getPokadetInfo(playerPick); // pedir stats ao controller;
@@ -213,11 +214,12 @@ public class Server {
 
         if(playerOption.size()<2){
             out.println(Messages.WAITING_PLAYER);
+            System.out.println("server: size"+playerOption.size());
         }
 
         System.out.println("player option size " + playerOption.size());
         while(playerOption.size() <2){
-            System.out.print("1");
+            System.out.print("");
         }
 
         setPlayers();
@@ -239,10 +241,10 @@ public class Server {
 
         if (choice == 1) {
 
-            /*if(socketMap.size()==2) {
+            if(socketMap.size()==2) {
                 socketMap = new HashMap<>();
                 playerOption = new HashMap<>();
-            }*/
+            }
 
             pokadetController.resetGame();
             serve(clientSocket);

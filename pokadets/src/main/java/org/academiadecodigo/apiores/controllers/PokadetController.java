@@ -37,6 +37,7 @@ public class PokadetController {
         if(!pokadetService.verifyAlive()){
             gameOver = true;
         }
+
     }
 
 
@@ -113,6 +114,7 @@ public class PokadetController {
     public void resetGame(){
         Bootstrap.setPokadetsStats(pokadetMap);
         gameOver = false;
+        Bootstrap.addPokeAbilities(pokadetMap);
     }
 
 }
