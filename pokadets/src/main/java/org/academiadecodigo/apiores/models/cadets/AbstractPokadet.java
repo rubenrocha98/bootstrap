@@ -20,6 +20,11 @@ public abstract class AbstractPokadet implements Pokadet {
     }
 
     public Ability getAbility(int skill) {
+        if(skill==4){
+            Ability ability = abilities.get(skill);
+            abilities.remove(skill);
+            return ability;
+        }
         return abilities.get(skill);
 
     }
