@@ -15,7 +15,7 @@ public class Messages {
     private static String player2Ascci="";
 
 
-    public final static  String[] OPEN_MENU = {"start", "quit"};
+    public final static  String[] OPEN_MENU = {"Start", "Quit"};
 
     public final static String[] RESTART_MENU = {"Yes", "No"};
 
@@ -29,7 +29,7 @@ public class Messages {
 
     public final static String QUIT = "Quiting Game...";
 
-    public final static String[] SELECT_POKADET = {"select Pokadet", "return"};
+    public final static String[] SELECT_POKADET = {"Yes", "Return"};
 
     public final static String RESTART = "\nRestart?";
 
