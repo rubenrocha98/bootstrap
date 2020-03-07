@@ -3,21 +3,21 @@ package org.academiadecodigo.apiores.models;
 public enum Ability {
 
     //basic abilities
-    KICK (Target.ENEMY, 8, "Kick (hit: 8)"),
-    SCRATCH (Target.ENEMY, 7, "Scratch (hit: 7)"),
-    HEADBUTT (Target.ENEMY, 11, "Headbutt (hit: 11)"),
-    THROW_CHAIR (Target.ENEMY, 11, "Throw chair (hit: 11)"),
-    UPPERCUT (Target.ENEMY, 9, "Uppercut (hit: 9)"),
+    KICK (Target.ENEMY, 8, "Kick (damage: 8)"),
+    SCRATCH (Target.ENEMY, 7, "Scratch (damage: 7)"),
+    HEADBUTT (Target.ENEMY, 11, "Headbutt (damage: 11)"),
+    THROW_CHAIR (Target.ENEMY, 11, "Throw chair (damage: 11)"),
+    UPPERCUT (Target.ENEMY, 9, "Uppercut (damage: 9)"),
     HEAL (Target.SELF, 6, "Heal (heal: 6)"),
-    THROW_RAT (Target.ENEMY, 11,"Throw Rat (hit: 11)"),
-    CHANGE_BACKGROUND(Target.ENEMY, 7,"Change Background (hit: 7)"),
-    STEAL_PASSWORD(Target.ENEMY,10,"Steal Password (hit: 10)"),
+    THROW_RAT (Target.ENEMY, 11,"Throw Rat (damage: 11)"),
+    CHANGE_BACKGROUND(Target.ENEMY, 7,"Change Background (damage: 7)"),
+    STEAL_PASSWORD(Target.ENEMY,10,"Steal Password (damage: 10)"),
     FALL_ASLEEP(Target.SELF,7,"Fall asleep during lecture (heal: 7)"),
     CIGAR(Target.SELF,5,"Cigarette break (heal: 5)"),
     COFFEE(Target.SELF, 5, "Coffee break (heal: 5)"),
     BEER(Target.SELF,6, "Drink a cold one (heal: 6)"),
-    TROLL_OPPONENT(Target.ENEMY,8,"Troll your opponent (hit: 8)"),
-    TROLL_MC(Target.ENEMY,5,"Troll enemy trainer (hit: 5)"),
+    TROLL_OPPONENT(Target.ENEMY,8,"Troll your opponent (damage: 8)"),
+    TROLL_MC(Target.ENEMY,5,"Troll enemy trainer (damage: 5)"),
 
 
 

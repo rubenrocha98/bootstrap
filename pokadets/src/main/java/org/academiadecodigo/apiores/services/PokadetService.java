@@ -98,6 +98,10 @@ public class PokadetService {
         return Messages.getStats(currentPokadet);
     }
 
+    public String getDoubleInfo(){
+        return Messages.getStats(currentPokadet, targetPokadet);
+    }
+
     public void setPokadet1(Pokadet pokadet1) {
         this.pokadet1 = pokadet1;
     }

@@ -103,6 +103,10 @@ public class PokadetController {
         return pokadetService.getInfo();
     }
 
+    public String getDoubleInfo(){
+        return pokadetService.getDoubleInfo();
+    }
+
     public void pickTrainer(int choice){
         pokadetService.implementTrainersBoost(Trainer.values()[choice-1]);
     }
