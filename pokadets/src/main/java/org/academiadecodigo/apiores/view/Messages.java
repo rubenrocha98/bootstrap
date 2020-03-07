@@ -8,10 +8,9 @@ import java.util.Map;
 
 public class Messages {
 
-    private static String winnerAscci="";
-    private static String player1Ascci="";
-    private static String player2Ascci="";
-
+    private static String winnerAscci = "";
+    private static String player1Ascci = "";
+    private static String player2Ascci = "";
 
 
     public final static String WAITING_PLAYER = "\nWaiting for player 2...";
@@ -26,13 +25,13 @@ public class Messages {
 
     public final static String INVALID_ABILITY = "";
 
-    public final static String  WELCOME ="\n\n                                  \n" +
+    public final static String WELCOME = "\n\n                                  \n" +
             "██████╗  ██████╗ ██╗  ██╗ █████╗ ██████╗ ███████╗████████╗███████╗\n" +
             "██╔══██╗██╔═══██╗██║ ██╔╝██╔══██╗██╔══██╗██╔════╝╚══██╔══╝██╔════╝\n" +
             "██████╔╝██║   ██║█████╔╝ ███████║██║  ██║█████╗     ██║   ███████╗\n" +
             "██╔═══╝ ██║   ██║██╔═██╗ ██╔══██║██║  ██║██╔══╝     ██║   ╚════██║\n" +
             "██║     ╚██████╔╝██║  ██╗██║  ██║██████╔╝███████╗   ██║   ███████║\n" +
-            "╚═╝      ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝   ╚═╝   ╚══════╝\n" ;
+            "╚═╝      ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝   ╚═╝   ╚══════╝\n";
 
     public final static String CHOOSE_PLAYER = "Choose your Pokadet!";
 
@@ -44,7 +43,7 @@ public class Messages {
             " +#+   +#+         +#+     \n" +
             "  #+#+#+#   #+#    #+# #+# \n" +
             "    ###      ########  ### " + player2Ascci;
-;
+    ;
     public final static String WINNER = winnerAscci + ("\n" +
             "       ██╗    ██╗ ██████╗ ███╗   ██╗██╗\n" +
             "       ██║    ██║██╔═══██╗████╗  ██║██║\n" +
@@ -53,7 +52,7 @@ public class Messages {
             "       ╚███╔███╔╝╚██████╔╝██║ ╚████║██╗\n" +
             "  You  ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═══╝╚═╝    Restart?\n" +
             "                                ");
-    
+
     public final static String LOOSER = ("\n" +
             "       ██╗      ██████╗ ███████╗████████╗      \n" +
             "       ██║     ██╔═══██╗██╔════╝╚══██╔══╝      \n" +
@@ -66,42 +65,39 @@ public class Messages {
     //ascii generator: https://manytools.org/hacker-tools/ascii-banner/
     //style: banner, font: ANSI Shadow
 
-    public static String[] open_menu(){
+    public static String[] open_menu() {
         return new String[]{"start", "quit"};
     }
-    public static String[]abilitiesMenu(Pokadet pokadet){
+
+    public static String[] abilitiesMenu(Pokadet pokadet) {
 
         Map<Integer, Ability> abilities = pokadet.getAbilities();
 
         String[] abilitiesString = new String[abilities.size()];
 
-        for (int i = 0; i<abilities.size(); i++){
-            abilitiesString[i]=abilities.get(i+1).getName();
+        for (int i = 0; i < abilities.size(); i++) {
+            abilitiesString[i] = abilities.get(i + 1).getName();
         }
         return abilitiesString;
     }
 
-    public static String pokadetInfo(Pokadet pokadet){
-        return "Hp: "+pokadet.getHp();
-    }
-
-    public static String[] pokadetMenu (Map<Integer,Pokadet> map){
+    public static String[] pokadetMenu(Map<Integer, Pokadet> map) {
 
         String[] pokadetsString = new String[map.size()];
 
         for (int i = 0; i < map.keySet().size(); i++) {
-            pokadetsString[i] = map.get(i+1).getName();
+            pokadetsString[i] = map.get(i + 1).getName();
         }
 
         return pokadetsString;
     }
 
-    public static String[] restartMenu(){
+    public static String[] restartMenu() {
 
         return new String[]{"Yes", "No"};
     }
 
-    public static void setWinnerAscci(String winnerAscci){
+    public static void setWinnerAscci(String winnerAscci) {
         Messages.winnerAscci = winnerAscci;
     }
 
@@ -111,5 +107,19 @@ public class Messages {
 
     public static void setPlayer2Ascci(String player2Ascci) {
         Messages.player2Ascci = player2Ascci;
+    }
+
+    public static String getStats(Pokadet pokadet) {
+        String skills = "";
+        for (String s : abilitiesMenu(pokadet)) {
+            skills += s + " | ";
+        }
+
+        return  "Current player: " + pokadet.getName() + "\n\n" +
+                "Player Abilities: " + skills + "\n\n" +
+                "HP: " + pokadet.getHp() + "\n" +
+                "Defense: " + pokadet.getDefense() + "\n" +
+                "Attack: " + pokadet.getAttack() + "\n" +
+                "Critical strike chance: " + pokadet.getCritChance() + "\n";
     }
 }

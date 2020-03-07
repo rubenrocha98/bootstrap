@@ -83,17 +83,12 @@ public class PokadetService {
         }
     }
 
-    public String getStats(){ //NOT IMPLEMENTED YET
-        return new String();
-    }
-
-
     public String[] getAbilities() {
         return Messages.abilitiesMenu(currentPokadet);
     }
 
     public String getInfo() {
-        return Messages.pokadetInfo(currentPokadet);
+        return Messages.getStats(currentPokadet);
     }
 
     public void setPokadet1(Pokadet pokadet1) {

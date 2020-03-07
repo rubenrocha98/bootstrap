@@ -8,7 +8,7 @@ public class Scanners {
 
     public static MenuInputScanner getMenu(Pokadet pokadet) {
         MenuInputScanner menuInputScanner = new MenuInputScanner(Messages.abilitiesMenu(pokadet));
-        menuInputScanner.setMessage(Messages.pokadetInfo(pokadet) + Messages.ABILITY_TO_USE);
+        menuInputScanner.setMessage(Messages.getStats(pokadet) + Messages.ABILITY_TO_USE);
         menuInputScanner.setError("");
         return null;
     }
