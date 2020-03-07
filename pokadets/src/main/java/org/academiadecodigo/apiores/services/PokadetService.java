@@ -10,9 +10,9 @@ import org.academiadecodigo.apiores.view.Messages;
 
 public class PokadetService {
 
-    Pokadet pokadet1;
-    Pokadet pokadet2;
-    PokadetController pokadetController;
+    private Pokadet pokadet1;
+    private Pokadet pokadet2;
+    private PokadetController pokadetController;
     private Pokadet currentPokadet;
     private Pokadet targetPokadet;
 
@@ -25,7 +25,22 @@ public class PokadetService {
             return;
         }
         chooseTargetPokadet();
-        targetPokadet.setHp(targetPokadet.getHp() - ability.getAmount());
+        attack(ability.getAmount());
+    }
+
+    private void attack(int amount){
+        int defense = targetPokadet.getDefense();
+        int damage = amount;
+        if (checkCrit()){
+            damage = (int) Math.floor(amount * 1.2);
+        }
+        damage -= defense;
+        targetPokadet.setHp(targetPokadet.getHp() - damage);
+    }
+
+    private boolean checkCrit(){
+        int random = ((int) (Math.ceil(Math.random()*100)));
+        return random <= currentPokadet.getCritChance();
     }
 
     private void chooseTargetPokadet() {
@@ -48,14 +63,6 @@ public class PokadetService {
         }
         return true;
     }
-
-   /* private int trainersBoostAmount(Trainer trainer) {
-        return trainer.getAmount();
-    }
-
-    private BoostType trainerBoostType(Trainer trainer) {
-        return trainer.getBoost();
-    }*/
 
     public void implementTrainersBoost(Trainer trainer){
         BoostType boost = trainer.getBoost();
