@@ -7,7 +7,10 @@ import java.util.Map;
 
 public class Messages {
 
-    public final static String[] OPEN_MENU = {"Start, Quit"};
+    public final static String[] OPEN_MENU = {"Start", "Quit"};
+    public final static String[] TRAINERS_MENU = {"SORAIA", "RICARDO", "RITA", "JOJO"};
+    public final static String CHOOSE_TRAINER = "Choose your Pokadet Trainer!";
+    public final static String CONTINUE = "\nContinue?";
     public final static String WAITING_PLAYER = "\nWaiting for player 2...";
     public final static String WAITING_OPONENT = "Waiting for oponent";
     public final static String ABILITY_TO_USE = "\nWhat ability do you want to use?";
@@ -23,7 +26,9 @@ public class Messages {
             "██╔═══╝ ██║   ██║██╔═██╗ ██╔══██║██║  ██║██╔══╝     ██║   ╚════██║\n" +
             "██║     ╚██████╔╝██║  ██╗██║  ██║██████╔╝███████╗   ██║   ███████║\n" +
             "╚═╝      ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝   ╚═╝   ╚══════╝\n";
+
     public final static String CHOOSE_PLAYER = "Choose your Pokadet!";
+
     public final static String LOOSER = ("\n" +
             "       ██╗      ██████╗ ███████╗████████╗      \n" +
             "       ██║     ██╔═══██╗██╔════╝╚══██╔══╝      \n" +
@@ -32,7 +37,9 @@ public class Messages {
             "       ███████╗╚██████╔╝███████║   ██║██╗██╗██╗\n" +
             " You   ╚══════╝ ╚═════╝ ╚══════╝   ╚═╝╚═╝╚═╝╚═╝   Restart?\n" +
             "                                        ");
+
     private static String winnerAscci = "";
+
     public final static String WINNER = winnerAscci + ("\n" +
             "       ██╗    ██╗ ██████╗ ███╗   ██╗██╗\n" +
             "       ██║    ██║██╔═══██╗████╗  ██║██║\n" +
@@ -41,8 +48,11 @@ public class Messages {
             "       ╚███╔███╔╝╚██████╔╝██║ ╚████║██╗\n" +
             "  You  ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═══╝╚═╝    Restart?\n" +
             "                                ");
+
     private static String player1Ascci = "";
+
     private static String player2Ascci = "";
+
     public final static String ASCCI_VS_ASCCI = player1Ascci + "   " +
             ":::     :::  ::::::::      \n" +
             ":+:     :+: :+:    :+:     \n" +

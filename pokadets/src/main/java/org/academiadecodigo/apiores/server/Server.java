@@ -204,7 +204,7 @@ public class Server {
 
 
     private class serverThread implements Runnable {
-        private Socket playerSocket;
+        private Socket playerSocket;     
 
         public serverThread(Socket playerSocket) {
             this.playerSocket = playerSocket;
