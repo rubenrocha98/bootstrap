@@ -19,6 +19,7 @@ public class Messages {
     public final static String SELECT_OPTION = "Select your option";
     public final static String QUIT = "Quiting Game...";
     public final static String[] SELECT_POKADET = {"Yes", "Return"};
+    public final static String RESTART = "Restart?";
     public final static String[] RESTART_MENU = {"Yes", "No"};
     public final static String INVALID_ABILITY = "";
     public final static String WELCOME = "\n\n                                  \n" +
@@ -105,19 +106,34 @@ public class Messages {
         Messages.player2Ascci = player2Ascci;
     }
 
-    public static String getStats(Pokadet pokadet) {
+    public static String getStats(Pokadet currentPokadet) {
         String skills = "";
-        for (String s : abilitiesMenu(pokadet)) {
+        for (String s : abilitiesMenu(currentPokadet)) {
             skills += s + " | ";
         }
 
-        return "Current player: " + pokadet.getName() + "\n\n" +
+        return "Current Pokadet: " + currentPokadet.getName() + "\n\n" +
                 "Player Abilities: " + skills + "\n\n" +
-                "HP: " + pokadet.getHp() + "\n" +
-                "Defense: " + pokadet.getDefense() + "\n" +
-                "Attack: " + pokadet.getAttack() + "\n" +
-                "Critical strike chance: " + pokadet.getCritChance() + "\n";
+                "Defense: " + currentPokadet.getDefense() + "\n" +
+                "Attack: " + currentPokadet.getAttack() + "\n" +
+                "Critical strike chance: " + currentPokadet.getCritChance() + "\n"+
+                "HP: " + currentPokadet.getHp() + "\n";
     }
+
+    public static String getStats(Pokadet currentPokadet, Pokadet targetPokadet) {
+        String skills = "";
+        for (String s : abilitiesMenu(currentPokadet)) {
+            skills += s + " | ";
+        }
+
+        return "Current Pokadet: " + currentPokadet.getName() + "\n\n" +
+                "Player Abilities: " + skills + "\n\n" +
+                "Defense: " + currentPokadet.getDefense() + "\n" +
+                "Attack: " + currentPokadet.getAttack() + "\n" +
+                "Critical strike chance: " + currentPokadet.getCritChance() + "\n\n"+
+                "HP: " + currentPokadet.getHp() + " ##### Enemy HP" + targetPokadet.getHp();
+    }
+
 
     public static String[] getTrainerInfo(){
         Trainer[] trainers = Trainer.values();
