@@ -1,7 +1,9 @@
 package org.academiadecodigo.apiores.view;
 
+
 import org.academiadecodigo.apiores.models.Ability;
 import org.academiadecodigo.apiores.models.cadets.Pokadet;
+import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 
 import java.security.PublicKey;
 import java.util.Map;
@@ -13,6 +15,11 @@ public class Messages {
     private static String player2Ascci="";
 
 
+    public final static  String[] OPEN_MENU = {"start", "quit"};
+
+    public final static String[] RESTART_MENU = {"Yes", "No"};
+
+    public final static String SELECT_OPTION = "Select option:";
 
     public final static String WAITING_PLAYER = "\nWaiting for player 2...";
 
@@ -21,6 +28,8 @@ public class Messages {
     public final static String ABILITY_TO_USE = "\nWhat ability do you want to use?";
 
     public final static String QUIT = "Quiting Game...";
+
+    public final static String[] SELECT_POKADET = {"select Pokadet", "return"};
 
     public final static String RESTART = "\nRestart?";
 
@@ -66,9 +75,6 @@ public class Messages {
     //ascii generator: https://manytools.org/hacker-tools/ascii-banner/
     //style: banner, font: ANSI Shadow
 
-    public static String[] open_menu(){
-        return new String[]{"start", "quit"};
-    }
     public static String[]abilitiesMenu(Pokadet pokadet){
 
         Map<Integer, Ability> abilities = pokadet.getAbilities();
@@ -94,11 +100,6 @@ public class Messages {
         }
 
         return pokadetsString;
-    }
-
-    public static String[] restartMenu(){
-
-        return new String[]{"Yes", "No"};
     }
 
     public static void setWinnerAscci(String winnerAscci){
