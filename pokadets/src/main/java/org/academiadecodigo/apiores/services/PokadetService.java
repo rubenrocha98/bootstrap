@@ -88,7 +88,7 @@ public class PokadetService {
     }
 
     public String getInfo() {
-        return Messages.pokadetInfo(currentPokadet);
+        return Messages.getStats(currentPokadet);
     }
 
     public void setPokadet1(Pokadet pokadet1) {

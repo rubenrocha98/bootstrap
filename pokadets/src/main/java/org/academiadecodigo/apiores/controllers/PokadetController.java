@@ -1,6 +1,7 @@
 package org.academiadecodigo.apiores.controllers;
 
 import org.academiadecodigo.apiores.models.cadets.Pokadet;
+import org.academiadecodigo.apiores.models.trainers.Trainer;
 import org.academiadecodigo.apiores.services.PokadetService;
 import org.academiadecodigo.apiores.view.Messages;
 
@@ -87,5 +88,9 @@ public class PokadetController {
 
     public String getInfo(){
         return pokadetService.getInfo();
+    }
+
+    private void pickTrainer(int choice){
+        pokadetService.implementTrainersBoost(Trainer.values()[choice-1]);
     }
 }
