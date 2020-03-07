@@ -10,14 +10,25 @@ public interface Pokadet {
 
     boolean isAlive();
 
-    void setHp(int hp);
-
-    int getHp();
-
-    String getName();
-
     void setAbilities(Ability ability1, Ability ability2, Ability ability3, Ability ability4);
 
     Map<Integer, Ability> getAbilities();
 
+    void setHp(int hp);
+
+    String getName();
+
+    int getHp();
+
+    int getAttack();
+
+    int getDefense();
+
+    int getCritChance();
+
+    void setAttack(int attack);
+
+    void setDefense(int defense);
+
+    void setCritChance(int critChance);
 }
