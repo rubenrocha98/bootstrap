@@ -1,5 +1,6 @@
 package org.academiadecodigo.apiores.controllers;
 
+import org.academiadecodigo.apiores.Bootstrap;
 import org.academiadecodigo.apiores.models.cadets.Pokadet;
 import org.academiadecodigo.apiores.models.trainers.Trainer;
 import org.academiadecodigo.apiores.services.PokadetService;
