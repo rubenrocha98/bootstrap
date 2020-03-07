@@ -30,11 +30,13 @@ public class PokadetService {
 
     private void attack(int amount){
         int defense = targetPokadet.getDefense();
+        int attack = currentPokadet.getAttack();
         int damage = amount;
         if (checkCrit()){
             damage = (int) Math.floor(amount * 1.2);
         }
         damage -= defense;
+        damage += attack;
         System.out.println("Damage dealt: " + damage);
         targetPokadet.setHp(targetPokadet.getHp() - damage);
     }
