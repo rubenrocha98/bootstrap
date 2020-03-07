@@ -4,6 +4,8 @@ import org.academiadecodigo.apiores.controllers.PokadetController;
 import org.academiadecodigo.apiores.models.Ability;
 import org.academiadecodigo.apiores.models.Target;
 import org.academiadecodigo.apiores.models.cadets.Pokadet;
+import org.academiadecodigo.apiores.models.trainers.BoostType;
+import org.academiadecodigo.apiores.models.trainers.Trainer;
 import org.academiadecodigo.apiores.view.Messages;
 
 public class PokadetService {
@@ -47,13 +49,36 @@ public class PokadetService {
         return true;
     }
 
-    private int trainersBoostAmount(Trainer trainer) {
-        return trainer.getAmount;
-        }
+   /* private int trainersBoostAmount(Trainer trainer) {
+        return trainer.getAmount();
+    }
 
-        private BoostType trainerBoostType(Trainer trainer){
-        return trainer.getBoostType();
+    private BoostType trainerBoostType(Trainer trainer) {
+        return trainer.getBoost();
+    }*/
+
+    public void implementTrainersBoost(Trainer trainer){
+        BoostType boost = trainer.getBoost();
+        int amount = trainer.getAmount();
+        switch (boost){
+            case HP:
+                currentPokadet.setHp(currentPokadet.getHp() + amount);
+                break;
+            case ATTACK:
+                currentPokadet.setAttack(currentPokadet.getAttack() + amount);
+                break;
+            case DEFENSE:
+                currentPokadet.setDefense(currentPokadet.getDefense() + amount);
+                break;
+            case CRITICAL:
+                currentPokadet.setCritChance(currentPokadet.getCritChance() + amount);
+                break;
         }
+    }
+
+    public String getStats(){ //NOT IMPLEMENTED YET
+        return new String();
+    }
 
 
     public String[] getAbilities() {
