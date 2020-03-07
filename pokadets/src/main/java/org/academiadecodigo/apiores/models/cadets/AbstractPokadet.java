@@ -11,7 +11,7 @@ public abstract class AbstractPokadet implements Pokadet {
     protected int hp;
     protected int attack;
     protected int defense;
-    protected int critChance = 5;
+    protected int critChance;
 
     protected Map<Integer, Ability> abilities;
 
@@ -85,6 +85,13 @@ public abstract class AbstractPokadet implements Pokadet {
 
     @Override
     public void setCritChance(int critChance) {
+        this.critChance = critChance;
+    }
+
+    public void setStats(int hp, int attack, int defense, int critChance){
+        this.hp = hp;
+        this.attack = attack;
+        this.defense = defense;
         this.critChance = critChance;
     }
 }
