@@ -187,7 +187,7 @@ public class Server {
 
         if (prompt.getUserInput(showPokadetStatsMenu) == 2) {
 
-            checkPlayers(prompt,menuInputScanner,out);
+            playerPick = checkPlayers(prompt,menuInputScanner,out);
         }
 
         return playerPick;
