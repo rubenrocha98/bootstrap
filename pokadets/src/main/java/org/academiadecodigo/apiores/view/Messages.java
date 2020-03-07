@@ -7,6 +7,7 @@ import java.util.Map;
 
 public class Messages {
 
+    public final static String LINE = "wwww wwww wwww wwww wwww wwww wwww wwww wwww wwww wwww wwww wwww\n";
     public final static String[] OPEN_MENU = {"Start", "Quit"};
     public final static String[] TRAINERS_MENU = {"SORAIA", "RICARDO", "RITA", "JOJO"};
     public final static String CHOOSE_TRAINER = "Choose your Pokadet Trainer!";
@@ -17,7 +18,7 @@ public class Messages {
     public final static String SELECT_OPTION = "Select your option";
     public final static String QUIT = "Quiting Game...";
     public final static String[] SELECT_POKADET = {"Yes", "Return"};
-    public final static String[] RESTART_MENU = {"\nYes", "No"};
+    public final static String[] RESTART_MENU = {"Yes", "No"};
     public final static String INVALID_ABILITY = "";
     public final static String WELCOME = "\n\n                                  \n" +
             "██████╗  ██████╗ ██╗  ██╗ █████╗ ██████╗ ███████╗████████╗███████╗\n" +
@@ -27,7 +28,7 @@ public class Messages {
             "██║     ╚██████╔╝██║  ██╗██║  ██║██████╔╝███████╗   ██║   ███████║\n" +
             "╚═╝      ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝   ╚═╝   ╚══════╝\n";
 
-    public final static String CHOOSE_PLAYER = "Choose your Pokadet!";
+    public final static String CHOOSE_PLAYER = LINE+"\nChoose your Pokadet!";
 
     public final static String LOOSER = ("\n" +
             "       ██╗      ██████╗ ███████╗████████╗      \n" +
