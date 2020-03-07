@@ -182,10 +182,10 @@ public class Server {
         //Player Pick
         int playerPick = prompt.getUserInput(menuInputScanner);
 
-        String pokadetStats = "batata";//pokadetController.getInfo(); // pedir stats ao controller;
+        String pokadetStats = pokadetController.getPokadetInfo(playerPick); // pedir stats ao controller;
 
         MenuInputScanner showPokadetStatsMenu = new MenuInputScanner(Messages.SELECT_POKADET);
-        showPokadetStatsMenu.setMessage(pokadetStats);
+        showPokadetStatsMenu.setMessage(pokadetStats + Messages.CONTINUE);
 
         if (prompt.getUserInput(showPokadetStatsMenu) == 2) {
 

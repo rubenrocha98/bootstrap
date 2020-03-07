@@ -86,6 +86,11 @@ public class PokadetController {
 
     }
 
+    public String getPokadetInfo(int pokadetId){
+        Pokadet pokadet = this.pokadetMap.get(pokadetId);
+        return pokadetService.getPokadetInfo(pokadet);
+    }
+
     public String getInfo(){
         return pokadetService.getInfo();
     }
