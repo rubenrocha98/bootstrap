@@ -3,6 +3,6 @@ package org.academiadecodigo.apiores.models.cadets;
 public class Hugo extends AbstractPokadet {
 
     public Hugo() {
-        name = "Hugo";
+        name = "Hugo - The disease spreader!";
     }
 }

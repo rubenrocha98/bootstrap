@@ -2,18 +2,31 @@ package org.academiadecodigo.apiores.models;
 
 public enum Ability {
 
-    KICK (Target.ENEMY, 10, "Kick"),
-    SCRATCH (Target.ENEMY, 10, "Scratch"),
-    HEADBUTT (Target.ENEMY, 10, "Headbutt"),
-    THROW_CHAIR (Target.ENEMY, 10, "Throw chair"),
-    UPPERCUT (Target.ENEMY, 10, "Uppercut"),
-    HEAL (Target.SELF, 15, "Heal"),
+    //basic abilities
+    KICK (Target.ENEMY, 8, "Kick (hit: 8)"),
+    SCRATCH (Target.ENEMY, 7, "Scratch (hit: 7)"),
+    HEADBUTT (Target.ENEMY, 11, "Headbutt (hit: 11)"),
+    THROW_CHAIR (Target.ENEMY, 11, "Throw chair (hit: 11)"),
+    UPPERCUT (Target.ENEMY, 9, "Uppercut (hit: 9)"),
+    HEAL (Target.SELF, 6, "Heal (heal: 6)"),
+    THROW_RAT (Target.ENEMY, 11,"Throw Rat (hit: 11)"),
+    CHANGE_BACKGROUND(Target.ENEMY, 7,"Change Background (hit: 7)"),
+    STEAL_PASSWORD(Target.ENEMY,10,"Steal Password (hit: 10)"),
+    FALL_ASLEEP(Target.SELF,7,"Fall asleep during lecture (heal: 7)"),
+    CIGAR(Target.SELF,5,"Cigarette break (heal: 5)"),
+    COFFEE(Target.SELF, 5, "Coffee break (heal: 5)"),
+    BEER(Target.SELF,6, "Drink a cold one (heal: 6)"),
+    TROLL_OPPONENT(Target.ENEMY,8,"Troll your opponent (hit: 8)"),
+    TROLL_MC(Target.ENEMY,5,"Troll enemy trainer (hit: 5)"),
+
+
+
 
     //Special abilities
     GUSTAVO_ABILITY (Target.ENEMY, 40, "THROW CHINELOS"),
     SARA_ABILITY (Target.ENEMY, 40, "THROW SQUARE ROOT"),
-    RUBEN_ABILITY (Target.ENEMY, 40, "-----"),
-    FABIO_ABILITY (Target.ENEMY, 40, "-----"),
+    RUBEN_ABILITY (Target.ENEMY, 40, "INTENSIVE QUESTIONS"),
+    FABIO_ABILITY (Target.SELF, 50, "BUY BEER"),
     BRUNO_ABILITY (Target.ENEMY, 40, "SENHOR"),
     JAIME_ABILITY (Target.SELF, 50, "GO TO MODELO"),
     ANDRE_ABILITY (Target.ENEMY, 40, "FEEDBACK MASTER"),

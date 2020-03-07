@@ -21,6 +21,7 @@ public abstract class AbstractPokadet implements Pokadet {
 
     public Ability getAbility(int skill) {
         return abilities.get(skill);
+
     }
 
     public void setHp(int hp) {
