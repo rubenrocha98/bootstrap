@@ -2,6 +2,7 @@ package org.academiadecodigo.apiores.view;
 
 import org.academiadecodigo.apiores.models.Ability;
 import org.academiadecodigo.apiores.models.cadets.Pokadet;
+import org.academiadecodigo.apiores.models.trainers.Trainer;
 
 import java.util.Map;
 
@@ -115,5 +116,14 @@ public class Messages {
                 "Defense: " + pokadet.getDefense() + "\n" +
                 "Attack: " + pokadet.getAttack() + "\n" +
                 "Critical strike chance: " + pokadet.getCritChance() + "\n";
+    }
+
+    public static String[] getTrainerInfo(){
+        Trainer[] trainers = Trainer.values();
+        String [] trainersName = new String[Trainer.values().length];
+        for (int i = 0; i < Trainer.values().length; i++) {
+            trainersName[i] = trainers[i].getName();
+        }
+        return trainersName;
     }
 }

@@ -14,7 +14,7 @@ public abstract class Scanners {
     }
 
     public static MenuInputScanner getTrainersMenu() {
-        MenuInputScanner trainersMenu = new MenuInputScanner(Messages.TRAINERS_MENU);
+        MenuInputScanner trainersMenu = new MenuInputScanner(Messages.getTrainerInfo());
         trainersMenu.setMessage(Messages.CHOOSE_TRAINER);
         return trainersMenu;
     }

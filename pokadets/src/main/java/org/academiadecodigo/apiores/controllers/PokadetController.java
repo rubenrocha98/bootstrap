@@ -95,7 +95,7 @@ public class PokadetController {
         return pokadetService.getInfo();
     }
 
-    private void pickTrainer(int choice){
+    public void pickTrainer(int choice){
         pokadetService.implementTrainersBoost(Trainer.values()[choice-1]);
     }
 

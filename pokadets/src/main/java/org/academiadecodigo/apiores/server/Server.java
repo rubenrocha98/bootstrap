@@ -2,6 +2,7 @@ package org.academiadecodigo.apiores.server;
 
 import org.academiadecodigo.apiores.controllers.PokadetController;
 import org.academiadecodigo.apiores.view.Messages;
+import org.academiadecodigo.apiores.view.scanner.Scanners;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
@@ -25,7 +26,7 @@ public class Server {
 
     private ServerSocket serverSocket = null;
     private PokadetController pokadetController;
-    private HashMap<Integer, Integer> playerOption; //currentPlayer , playerOptionAbility
+    private HashMap<Integer, Integer> playerOption; //currentPlayer , pokadet choice
     private HashMap<Socket, Integer> socketMap; //clientSocker , currentPlayer
     private int playerId = 1;
     public Server() {
@@ -59,45 +60,17 @@ public class Server {
         InputStream in = null;
 
 
-        MenuInputScanner menuInputScanner0 = new MenuInputScanner(Messages.OPEN_MENU);
-        menuInputScanner0.setMessage(Messages.SELECT_OPTION);
 
-
-        MenuInputScanner menuInputScanner = new MenuInputScanner(pokadetController.getPokadetOptions());
-        menuInputScanner.setMessage(Messages.CHOOSE_PLAYER);
 
         try {
+
+
             in = new DataInputStream(clientSocket.getInputStream());
             out = new PrintStream(clientSocket.getOutputStream(), true);
             Prompt prompt = new Prompt(in, out);
 
-            // welcome message
-            printWelcomeMessage(out);
+            beggining(out, prompt, clientSocket);
 
-            int playerPick0 = prompt.getUserInput(menuInputScanner0);
-
-            // if quit Game
-            if (playerPick0 ==2){
-                System.out.println(Messages.QUIT);
-                out.println(Messages.QUIT);
-                System.exit(0);}
-
-            // Method Checking player Picked
-           int playerPick = checkPlayers(prompt, menuInputScanner, out);
-
-            // insert player selected on map
-            playerOption.put(socketMap.get(clientSocket), playerPick);
-
-
-            if(playerOption.size()<2){
-                out.println(Messages.WAITING_PLAYER);
-                System.out.println(Messages.WAITING_PLAYER);
-            }
-            while(playerOption.size() <2){
-                System.out.print("");
-            }
-
-            setPlayers();
 
             MenuInputScanner abilities;
             //fight
@@ -106,6 +79,11 @@ public class Server {
                     notifyAll();
                     out.println(Messages.WAITING_OPONENT);
                     wait();
+
+                    if(pokadetController.isGameOver()){
+                        break;
+                    }
+
                     abilities = new MenuInputScanner(pokadetController.getAbilitiesOptions(socketMap.get(clientSocket)));
                     abilities.setMessage(pokadetController.getInfo()+Messages.ABILITY_TO_USE);
                     int abilityPick = prompt.getUserInput(abilities);
@@ -122,7 +100,7 @@ public class Server {
             MenuInputScanner finalMenu = new MenuInputScanner(Messages.RESTART_MENU);
             finalMenu.setMessage("");
 
-            menuInputScanner.setMessage(pokadetController.getWinner().getName() + Messages.WINNER);
+           // menuInputScanner.setMessage(pokadetController.getWinner().getName() + Messages.WINNER);
 
             prompt.getUserInput(finalMenu);
 
@@ -196,6 +174,13 @@ public class Server {
 
     }
 
+    private void chooseTrainer(Prompt prompt) {
+
+        int choice = prompt.getUserInput(Scanners.getTrainersMenu());
+
+        pokadetController.pickTrainer(choice);
+    }
+
     public synchronized void setPlayers() {
 
         pokadetController.addPokadets(playerOption.get(1),playerOption.get(2));
@@ -214,6 +199,45 @@ public class Server {
         public void run() {
             serve(playerSocket);
         }
+    }
+
+
+    private void beggining(PrintStream out, Prompt prompt, Socket clientSocket){
+        // welcome message
+        MenuInputScanner menuInputScanner0 = new MenuInputScanner(Messages.OPEN_MENU);
+        menuInputScanner0.setMessage(Messages.SELECT_OPTION);
+
+
+        MenuInputScanner menuInputScanner = new MenuInputScanner(pokadetController.getPokadetOptions());
+        menuInputScanner.setMessage(Messages.CHOOSE_PLAYER);
+        printWelcomeMessage(out);
+
+        int playerPick0 = prompt.getUserInput(menuInputScanner0);
+
+        // if quit Game
+        if (playerPick0 ==2){
+            out.println(Messages.QUIT);
+            System.exit(0);
+        }
+
+        // Method Checking player Picked
+        int playerPick = checkPlayers(prompt, menuInputScanner, out);
+
+        // insert player selected on map
+        playerOption.put(socketMap.get(clientSocket), playerPick);
+
+        if(playerOption.size()<2){
+            out.println(Messages.WAITING_PLAYER);
+            System.out.println(Messages.WAITING_PLAYER);
+        }
+        while(playerOption.size() <2){
+            System.out.print("");
+        }
+
+        setPlayers();
+
+        chooseTrainer(prompt);
+
     }
 
 
