@@ -93,4 +93,13 @@ public class PokadetController {
     private void pickTrainer(int choice){
         pokadetService.implementTrainersBoost(Trainer.values()[choice-1]);
     }
+
+    public String[] getTrainerInfo(){
+        Trainer [] trainers = Trainer.values();
+        String [] trainersName = new String[Trainer.values().length];
+        for (int i = 0; i < Trainer.values().length; i++) {
+           trainersName[i] = trainers[i].getName();
+        }
+        return trainersName;
+    }
 }
