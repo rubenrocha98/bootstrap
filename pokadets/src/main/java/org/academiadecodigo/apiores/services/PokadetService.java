@@ -35,6 +35,7 @@ public class PokadetService {
             damage = (int) Math.floor(amount * 1.2);
         }
         damage -= defense;
+        System.out.println("Damage dealt: " + damage);
         targetPokadet.setHp(targetPokadet.getHp() - damage);
     }
 
