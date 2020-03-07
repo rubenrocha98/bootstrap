@@ -87,7 +87,11 @@ public class PokadetService {
         return Messages.abilitiesMenu(currentPokadet);
     }
 
-    public String getInfo() {
+    public String getPokadetInfo(Pokadet pokadet) {
+        return Messages.getStats(pokadet);
+    }
+
+    public String getInfo(){
         return Messages.getStats(currentPokadet);
     }
 
