@@ -32,7 +32,7 @@ public class Bootstrap {
         Pokadet[] pokadets = createPokadets();
         addToMap(pokadetMap, pokadets);
         setPokadetsStats(pokadetMap);
-
+        addPokeAbilities(pokadetMap);
 
         return server;
     }
@@ -56,24 +56,6 @@ public class Bootstrap {
         Pokadet ruben = new Ruben();
         Pokadet sara = new Sara();
         Pokadet xavier = new Xavier();
-        andre.setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.CIGAR, Ability.ANDRE_ABILITY);
-        bernardo.setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.BERNARDO_ABILITY);
-        bruno.setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.BRUNO_ABILITY);
-        claudia.setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.CLAUDIA_ABILITY);
-        dutra.setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.DUTRA_ABILITY);
-        evandro.setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.EVANDRO_ABILITY);
-        fabio.setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.FABIO_ABILITY);
-        francisco.setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.FRANCISCO_ABILITY);
-        gustavo.setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.GUSTAVO_ABILITY);
-        hugo.setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.HUGO_ABILITY);
-        jaime.setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.JAIME_ABILITY);
-        julio.setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.JULIO_ABILITY);
-        miguel.setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.MIGUEL_ABILITY);
-        paulo.setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.PAULO_ABILITY);
-        pedro.setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.PEDRO_ABILITY);
-        ruben.setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.RUBEN_ABILITY);
-        sara.setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.SARA_ABILITY);
-        xavier.setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.XAVIER_ABILITY);
         Pokadet[] pokadets = {andre, bernardo, bruno, claudia, dutra, evandro, fabio, francisco, gustavo, hugo,
                 jaime, julio, miguel, paulo, pedro, ruben, sara, xavier};
         return pokadets;
@@ -85,9 +67,25 @@ public class Bootstrap {
         }
     }
 
-    private void addPokeAbilities(Map<Integer,Pokadet> map){
-        //THIS METHOD WILL BE DONE AT THE END WHEN ALL PLAYERS ABILITIES WERE CHOSEN, AND IT WILL DO THE SAME
-        //AS THE SETPOKADETSSTATS BUT WITH SET ABILITIES INSTEAD
+    public static void addPokeAbilities(Map<Integer,Pokadet> map){
+        map.get(1).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.CIGAR, Ability.ANDRE_ABILITY);
+        map.get(2).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.BERNARDO_ABILITY);
+        map.get(3).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.BRUNO_ABILITY);
+        map.get(4).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.CLAUDIA_ABILITY);
+        map.get(5).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.DUTRA_ABILITY);
+        map.get(6).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.EVANDRO_ABILITY);
+        map.get(7).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.FABIO_ABILITY);
+        map.get(8).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.FRANCISCO_ABILITY);
+        map.get(9).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.GUSTAVO_ABILITY);
+        map.get(10).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.HUGO_ABILITY);
+        map.get(11).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.JAIME_ABILITY);
+        map.get(12).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.JULIO_ABILITY);
+        map.get(13).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.MIGUEL_ABILITY);
+        map.get(14).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.PAULO_ABILITY);
+        map.get(15).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.PEDRO_ABILITY);
+        map.get(16).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.RUBEN_ABILITY);
+        map.get(17).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.SARA_ABILITY);
+        map.get(18).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.XAVIER_ABILITY);
     }
 
     public static void setPokadetsStats(Map<Integer, Pokadet> map) {

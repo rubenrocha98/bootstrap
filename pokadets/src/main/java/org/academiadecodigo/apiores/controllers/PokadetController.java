@@ -113,6 +113,7 @@ public class PokadetController {
 
     public void resetPokadets(){
         Bootstrap.setPokadetsStats(pokadetMap);
+        Bootstrap.addPokeAbilities(pokadetMap);
     }
 
 }
