@@ -3,8 +3,8 @@ package org.academiadecodigo.apiores.models.trainers;
 public enum Trainer {
 
     SORAIA(20, BoostType.HP,"Soraia, gives you a 20HP boost."),
-    RICARDO(10, BoostType.DEFENSE,"Ricardo, increases defense by 10."),
-    RITA(10, BoostType.ATTACK,"Rita, increases atack by 10."),
+    RICARDO(5, BoostType.DEFENSE,"Ricardo, increases defense by 10."),
+    RITA(7, BoostType.ATTACK,"Rita, increases atack by 10."),
     JOJO(5, BoostType.CRITICAL,"Jojo, increases critical strike chance by 5%");
 
     private int amount;
