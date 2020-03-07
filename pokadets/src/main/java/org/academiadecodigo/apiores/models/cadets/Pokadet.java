@@ -31,4 +31,6 @@ public interface Pokadet {
     void setDefense(int defense);
 
     void setCritChance(int critChance);
+
+    void setStats(int hp, int attack, int defense, int critChance);
 }
