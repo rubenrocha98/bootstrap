@@ -111,8 +111,9 @@ public class PokadetController {
         pokadetService.implementTrainersBoost(Trainer.values()[choice-1]);
     }
 
-    public void resetPokadets(){
+    public void resetGame(){
         Bootstrap.setPokadetsStats(pokadetMap);
+        gameOver = false;
         Bootstrap.addPokeAbilities(pokadetMap);
     }
 
