@@ -7,27 +7,26 @@ import java.util.Map;
 
 public abstract class AbstractPokadet implements Pokadet {
 
-    protected Map<Integer, Ability> abilities;
-    protected int hp;
     protected String name;
+    protected int hp;
+    protected int attack;
+    protected int defense;
+    protected int critChance = 5;
+
+    protected Map<Integer, Ability> abilities;
 
     public boolean isAlive() {
-        return hp>0;
+        return hp > 0;
     }
 
     public Ability getAbility(int skill) {
         return abilities.get(skill);
     }
 
-    public int getHp() {
-        return hp;
-    }
-
     public void setHp(int hp) {
         this.hp = hp;
 
     }
-
 
     public void setAbilities(Ability ability1, Ability ability2, Ability ability3, Ability ability4) {
 
@@ -46,5 +45,40 @@ public abstract class AbstractPokadet implements Pokadet {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public int getHp() {
+        return hp;
+    }
+
+    @Override
+    public int getAttack() {
+        return attack;
+    }
+
+    @Override
+    public int getDefense() {
+        return defense;
+    }
+
+    @Override
+    public int getCritChance() {
+        return critChance;
+    }
+
+    @Override
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
+    @Override
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
+    @Override
+    public void setCritChance(int critChance) {
+        this.critChance = critChance;
     }
 }
