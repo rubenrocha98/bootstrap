@@ -98,13 +98,14 @@ public class Server {
             }
             setPlayers();
 
+            MenuInputScanner abilities;
             //fight
             while (!pokadetController.isGameOver()) {
                 synchronized (this) {
                     notifyAll();
                     out.println(Messages.WAITING_OPONENT);
                     wait();
-                    MenuInputScanner abilities = new MenuInputScanner(pokadetController.getAbilitiesOptions(socketMap.get(clientSocket)));
+                    abilities = new MenuInputScanner(pokadetController.getAbilitiesOptions(socketMap.get(clientSocket)));
                     abilities.setMessage(pokadetController.getInfo()+Messages.ABILITY_TO_USE);
                     int abilityPick = prompt.getUserInput(abilities);
 

@@ -47,6 +47,22 @@ public class PokadetService {
         return true;
     }
 
+    private int trainersBoostAmount(Trainer trainer) {
+        return trainer.getAmount;
+        }
+
+        private BoostType trainerBoostType(Trainer trainer){
+        return trainer.getBoostType();
+        }
+
+
+    public String[] getAbilities() {
+        return Messages.abilitiesMenu(currentPokadet);
+    }
+
+    public String getInfo() {
+        return Messages.pokadetInfo(currentPokadet);
+    }
 
     public void setPokadet1(Pokadet pokadet1) {
         this.pokadet1 = pokadet1;
@@ -62,14 +78,6 @@ public class PokadetService {
 
     public void setPokadetController(PokadetController pokadetController) {
         this.pokadetController = pokadetController;
-    }
-
-    public String[] getAbilities(){
-        return Messages.abilitiesMenu(currentPokadet);
-    }
-
-    public String getInfo(){
-        return Messages.pokadetInfo(currentPokadet);
     }
 }
 
