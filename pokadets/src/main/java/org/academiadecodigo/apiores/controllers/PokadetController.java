@@ -1,6 +1,7 @@
 package org.academiadecodigo.apiores.controllers;
 
 import org.academiadecodigo.apiores.models.cadets.Pokadet;
+import org.academiadecodigo.apiores.models.trainers.Trainer;
 import org.academiadecodigo.apiores.services.PokadetService;
 import org.academiadecodigo.apiores.view.Messages;
 
@@ -87,5 +88,18 @@ public class PokadetController {
 
     public String getInfo(){
         return pokadetService.getInfo();
+    }
+
+    private void pickTrainer(int choice){
+        pokadetService.implementTrainersBoost(Trainer.values()[choice-1]);
+    }
+
+    public String[] getTrainerInfo(){
+        Trainer [] trainers = Trainer.values();
+        String [] trainersName = new String[Trainer.values().length];
+        for (int i = 0; i < Trainer.values().length; i++) {
+           trainersName[i] = trainers[i].getName();
+        }
+        return trainersName;
     }
 }
