@@ -99,13 +99,14 @@ public class Server {
 
             setPlayers();
 
+            MenuInputScanner abilities;
             //fight
             while (!pokadetController.isGameOver()) {
                 synchronized (this) {
                     notifyAll();
                     out.println(Messages.WAITING_OPONENT);
                     wait();
-                    MenuInputScanner abilities = new MenuInputScanner(pokadetController.getAbilitiesOptions(socketMap.get(clientSocket)));
+                    abilities = new MenuInputScanner(pokadetController.getAbilitiesOptions(socketMap.get(clientSocket)));
                     abilities.setMessage(pokadetController.getInfo()+Messages.ABILITY_TO_USE);
                     int abilityPick = prompt.getUserInput(abilities);
 
@@ -126,13 +127,14 @@ public class Server {
             prompt.getUserInput(finalMenu);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("\nPlayer Disconected");
         }
         try {
             out.close();
             in.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+
         }
 
 
@@ -180,7 +182,7 @@ public class Server {
         //Player Pick
         int playerPick = prompt.getUserInput(menuInputScanner);
 
-        String pokadetStats = "stattstssss teste\n choose this pokadet?"; // pedir stats ao controller;
+        String pokadetStats = "batata";//pokadetController.getInfo(); // pedir stats ao controller;
 
         MenuInputScanner showPokadetStatsMenu = new MenuInputScanner(Messages.SELECT_POKADET);
         showPokadetStatsMenu.setMessage(pokadetStats);
