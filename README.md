@@ -1,7 +1,7 @@
 # Team Database
 <hr>
 
-This repository contains the game Pokadet, developped for Academia de Codigo, Terceira.
+This repository contains the game Pokadet, developped for Academia de Codigo, Terceira.<br
 
 <hr>
 
