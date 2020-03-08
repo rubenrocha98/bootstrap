@@ -5,7 +5,7 @@ This repository contains the game Pokadet, developped for Academia de Codigo, Te
 
 <hr>
 
-#Cadets
+<h1>Cadets</h1>
 
 Fabio Martins
 Gustavo Mendes
