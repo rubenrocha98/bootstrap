@@ -81,7 +81,8 @@ public class PokadetService {
         int amount = trainer.getAmount();
         switch (boost){
             case HP:
-                currentPokadet.setHp(currentPokadet.getHp() + amount);
+                currentPokadet.setMaxHP(currentPokadet.getMaxHP() + amount);
+                currentPokadet.setHp(currentPokadet.getMaxHP());
                 break;
             case ATTACK:
                 currentPokadet.setAttack(currentPokadet.getAttack() + amount);

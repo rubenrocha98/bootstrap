@@ -91,7 +91,7 @@ public class Bootstrap {
 
     private void setPokadetsMaxHP(Map<Integer, Pokadet> map){
         for (int i = 1; i < map.size(); i++) {
-            map.get(1).setMaxHP(map.get(1).getHp());
+            map.get(i).setMaxHP(map.get(i).getHp());
         }
     }
 

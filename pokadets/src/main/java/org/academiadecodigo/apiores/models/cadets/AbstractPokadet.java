@@ -96,7 +96,7 @@ public abstract class AbstractPokadet implements Pokadet {
         this.critChance = critChance;
     }
 
-    public void setMaxHp(int maxHP){
+    public void setMaxHP(int maxHP){
         this.maxHP = maxHP;
     }
 
