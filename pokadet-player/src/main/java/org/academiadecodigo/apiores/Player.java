@@ -40,7 +40,8 @@ public class Player {
             ReadFromServer read = new ReadFromServer();
 
             String choice;
-
+            Sound sound = new Sound(" resources/pokemon.wav");
+            sound.play(true);
             while (clientSocket.isBound()) {
 
                 executor.execute(read);
@@ -59,9 +60,9 @@ public class Player {
     }
 
     private void readFromServer(BufferedReader in) throws IOException {
-
-        while (clientSocket.isBound()) {
-            System.out.println(in.readLine());
+        String message="";
+        while (clientSocket.isBound() && (message=in.readLine())!=null) {
+            System.out.println(message);
         }
     }
 
@@ -94,6 +95,7 @@ public class Player {
         } catch (IOException e) {
             System.err.println("Error closing stream: " + e.getMessage());
         }
+
     }
 
     //Runnable class
