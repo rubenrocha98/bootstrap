@@ -1,3 +1,13 @@
 # Team Database
 <hr>
-This
+
+This repository contains the game Pokadet, developped for Academia de Codigo, Terceira.
+
+<hr>
+
+#Cadets
+
+Fabio Martins
+Gustavo Mendes
+Ruben Rocha
+Sara Adelino
