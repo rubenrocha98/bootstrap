@@ -8,8 +8,6 @@ import org.academiadecodigo.apiores.models.trainers.BoostType;
 import org.academiadecodigo.apiores.models.trainers.Trainer;
 import org.academiadecodigo.apiores.view.Messages;
 
-import java.sql.SQLOutput;
-
 public class PokadetService {
 
     private Pokadet pokadet1;
@@ -17,37 +15,44 @@ public class PokadetService {
     private PokadetController pokadetController;
     private Pokadet currentPokadet;
     private Pokadet targetPokadet;
+    private String crit;
 
 
     public String hit(int abilityPick) {
         Ability ability = currentPokadet.getAbility(abilityPick);
+
         if (ability.getTarget().equals(Target.SELF)) {
-            if(currentPokadet.getHp() + ability.getAmount() > currentPokadet.getMaxHP()){
+            if (currentPokadet.getHp() + ability.getAmount() > currentPokadet.getMaxHP()) {
                 currentPokadet.setHp(currentPokadet.getMaxHP());
                 return ability.getName();
             }
+
             currentPokadet.setHp(currentPokadet.getHp() + ability.getAmount());
             return ability.getName();
         }
         chooseTargetPokadet();
         int damage = attack(ability.getAmount());
-        if(abilityPick == 2){
+
+        if (abilityPick == 2) {
             damage += attackRandom();
             System.out.println("random: " + damage);
         }
-        return ability.getName() + " hit for "+damage+"hp\n";
+        return ability.getName() + crit + " hit for " + damage + "hp\n";
     }
 
-    private int attack(int amount){
+    private int attack(int amount) {
         int defense = targetPokadet.getDefense();
         int attack = currentPokadet.getAttack();
         int damage = amount;
-        if (checkCrit()){
+        crit = "";
+        if (checkCrit()) {
             damage = (int) Math.floor(amount * 1.2);
+            crit = " critical";
+
         }
         damage -= defense;
         damage += attack;
-        if(damage < 0 ){
+        if (damage < 0) {
             damage = 0;
         }
         System.out.println("Damage dealt: " + damage);
@@ -55,13 +60,13 @@ public class PokadetService {
         return damage;
     }
 
-    private boolean checkCrit(){
-        int random = ((int) (Math.ceil(Math.random()*100)));
+    private boolean checkCrit() {
+        int random = ((int) (Math.ceil(Math.random() * 100)));
         return random <= currentPokadet.getCritChance();
     }
 
-    private int attackRandom(){
-        return (int) (Math.ceil(Math.random()*5));
+    private int attackRandom() {
+        return (int) (Math.ceil(Math.random() * 5));
     }
 
     private void chooseTargetPokadet() {
@@ -75,20 +80,20 @@ public class PokadetService {
 
     public boolean verifyAlive() {
         if (!pokadet1.isAlive()) {
-            pokadetController.setWinner(pokadet2);
+
             return false;
         }
         if (!pokadet2.isAlive()) {
-            pokadetController.setWinner(pokadet1);
+
             return false;
         }
         return true;
     }
 
-    public void implementTrainersBoost(Trainer trainer){
+    public void implementTrainersBoost(Trainer trainer) {
         BoostType boost = trainer.getBoost();
         int amount = trainer.getAmount();
-        switch (boost){
+        switch (boost) {
             case HP:
                 currentPokadet.setMaxHP(currentPokadet.getMaxHP() + amount);
                 currentPokadet.setHp(currentPokadet.getMaxHP());
@@ -113,16 +118,16 @@ public class PokadetService {
         return Messages.getStats(pokadet);
     }
 
-    public String getInfo(){
+    public String getInfo() {
         return Messages.getStats(currentPokadet);
     }
 
-    public String getDoubleInfo(){
-        if(currentPokadet.equals(pokadet1)){
+    public String getDoubleInfo() {
+        if (currentPokadet.equals(pokadet1)) {
             return Messages.getStats(currentPokadet, pokadet2);
         }
 
-        return Messages.getStats(currentPokadet,pokadet1);
+        return Messages.getStats(currentPokadet, pokadet1);
 
     }
 
