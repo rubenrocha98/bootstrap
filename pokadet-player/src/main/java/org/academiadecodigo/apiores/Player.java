@@ -64,6 +64,7 @@ public class Player {
         while (clientSocket.isBound() && (message=in.readLine())!=null) {
             System.out.println(message);
         }
+        System.exit(0);
     }
 
     private void getPlayerInput() {
