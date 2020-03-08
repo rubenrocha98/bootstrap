@@ -42,6 +42,14 @@ public class PokadetController {
 
     }
 
+    public String getCurrentHp(){
+        return pokadetService.getCurrentPokadetHp();
+    }
+
+    public String getTargetHp(){
+        return pokadetService.getTargetPokadetHp();
+    }
+
 
 
     public void setPokadetService(PokadetService pokadetService) {

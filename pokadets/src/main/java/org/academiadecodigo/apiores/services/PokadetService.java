@@ -24,21 +24,35 @@ public class PokadetService {
         if (ability.getTarget().equals(Target.SELF)) {
             if (currentPokadet.getHp() + ability.getAmount() > currentPokadet.getMaxHP()) {
                 currentPokadet.setHp(currentPokadet.getMaxHP());
-                return ability.getName();
+                targetPokadet=currentPokadet;
+                return ability.getName() + "\n";
             }
-
+            targetPokadet=currentPokadet;
             currentPokadet.setHp(currentPokadet.getHp() + ability.getAmount());
-            return ability.getName();
+            return ability.getName()+"\n";
         }
+
         chooseTargetPokadet();
-        int damage = attack(ability.getAmount());
+        int damage = ability.getAmount();
 
         if (abilityPick == 2) {
             damage += attackRandom();
             System.out.println("random: " + damage);
         }
-        return ability.getName() + crit + " hit for " + damage + "hp\n";
+
+        damage = attack(damage);
+
+        return ability.getName() + Messages.YELLOW_BOLD + crit + Messages.ANSI_RESET + " hit for " + Messages.ANSI_RED + damage + "hp" + Messages.ANSI_RESET+"\n";
     }
+
+    public String getCurrentPokadetHp(){
+        return "You now have: "+Messages.GREEN_BOLD_BRIGHT + targetPokadet.getHp()+"hp"+Messages.ANSI_RESET;
+    }
+    public String getTargetPokadetHp(){
+        return "Enemy now has: "+Messages.RED_BOLD_BRIGHT+ targetPokadet.getHp()+"hp"+Messages.ANSI_RESET;
+    }
+
+
 
     private int attack(int amount) {
         int defense = targetPokadet.getDefense();
@@ -47,14 +61,16 @@ public class PokadetService {
         crit = "";
         if (checkCrit()) {
             damage = (int) Math.floor(amount * 1.2);
-            crit = " critical";
-
+            crit = " CRITICAL";
         }
+
         damage -= defense;
         damage += attack;
+
         if (damage < 0) {
             damage = 0;
         }
+
         System.out.println("Damage dealt: " + damage);
         targetPokadet.setHp(targetPokadet.getHp() - damage);
         return damage;
@@ -70,9 +86,11 @@ public class PokadetService {
     }
 
     private void chooseTargetPokadet() {
+
         if (currentPokadet == pokadet1) {
             targetPokadet = pokadet2;
         }
+
         if (currentPokadet == pokadet2) {
             targetPokadet = pokadet1;
         }
@@ -83,6 +101,7 @@ public class PokadetService {
 
             return false;
         }
+
         if (!pokadet2.isAlive()) {
 
             return false;
@@ -116,10 +135,6 @@ public class PokadetService {
 
     public String getPokadetInfo(Pokadet pokadet) {
         return Messages.getStats(pokadet);
-    }
-
-    public String getInfo() {
-        return Messages.getStats(currentPokadet);
     }
 
     public String getDoubleInfo() {

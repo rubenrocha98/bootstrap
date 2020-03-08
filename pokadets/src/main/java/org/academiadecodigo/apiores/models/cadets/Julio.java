@@ -1,8 +1,10 @@
 package org.academiadecodigo.apiores.models.cadets;
 
+import org.academiadecodigo.apiores.view.Messages;
+
 public class Julio extends AbstractPokadet {
 
     public Julio() {
-        name = "Julio - He will throw turtles at you!";
+        name = Messages.WHITE_BOLD_BRIGHT+"Júlio"+Messages.ANSI_RESET+ " - He will throw turtles at you!";
     }
 }

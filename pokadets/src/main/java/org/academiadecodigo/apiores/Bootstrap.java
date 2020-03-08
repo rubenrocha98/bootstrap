@@ -102,17 +102,17 @@ public class Bootstrap {
         map.get(4).setStats(120, 5, 8, 5);
         map.get(5).setStats(105, 8, 5, 5);
         map.get(6).setStats(120, 4, 8, 5);
-        map.get(7).setStats(120, 7, 9, 5);
+        map.get(7).setStats(120, 7, 9, 8);
         map.get(8).setStats(110, 7, 7, 5);
-        map.get(9).setStats(105, 8, 6, 5);
+        map.get(9).setStats(115, 10, 7, 8);
         map.get(10).setStats(110, 7, 8, 5);
         map.get(11).setStats(100, 8, 5, 5);
         map.get(12).setStats(115, 7, 9, 5);
         map.get(13).setStats(120, 5, 9, 5);
         map.get(14).setStats(110, 7, 8, 5);
         map.get(15).setStats(115, 6, 9, 5);
-        map.get(16).setStats(100, 8, 6, 5);
-        map.get(17).setStats(100, 6, 8, 5);
+        map.get(16).setStats(110, 8, 7, 8);
+        map.get(17).setStats(110, 6, 8, 8);
         map.get(18).setStats(110, 7, 7, 5);
 
     }
