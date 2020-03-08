@@ -17,18 +17,19 @@ public class PokadetService {
     private Pokadet targetPokadet;
 
 
-    public void hit(int abilityPick) {
+    public String hit(int abilityPick) {
         Ability ability = currentPokadet.getAbility(abilityPick);
 
         if (ability.getTarget().equals(Target.SELF)) {
             currentPokadet.setHp(currentPokadet.getHp() + ability.getAmount());
-            return;
+            return ability.getName();
         }
         chooseTargetPokadet();
-        attack(ability.getAmount());
+        int damage = attack(ability.getAmount());
+        return ability.getName() + " hit for "+damage+"hp\n";
     }
 
-    private void attack(int amount){
+    private int attack(int amount){
         int defense = targetPokadet.getDefense();
         int attack = currentPokadet.getAttack();
         int damage = amount;
@@ -42,6 +43,7 @@ public class PokadetService {
         }
         System.out.println("Damage dealt: " + damage);
         targetPokadet.setHp(targetPokadet.getHp() - damage);
+        return damage;
     }
 
     private boolean checkCrit(){
@@ -102,7 +104,12 @@ public class PokadetService {
     }
 
     public String getDoubleInfo(){
-        return Messages.getStats(currentPokadet, targetPokadet);
+        if(currentPokadet.equals(pokadet1)){
+            return Messages.getStats(currentPokadet, pokadet2);
+        }
+
+        return Messages.getStats(currentPokadet,pokadet1);
+
     }
 
     public void setPokadet1(Pokadet pokadet1) {
