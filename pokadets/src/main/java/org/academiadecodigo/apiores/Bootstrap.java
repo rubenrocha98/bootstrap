@@ -32,6 +32,7 @@ public class Bootstrap {
         Pokadet[] pokadets = createPokadets();
         addToMap(pokadetMap, pokadets);
         setPokadetsStats(pokadetMap);
+        setPokadetsMaxHP(pokadetMap);
         addPokeAbilities(pokadetMap);
 
         return server;
@@ -86,6 +87,12 @@ public class Bootstrap {
         map.get(16).setAbilities(Ability.HEADBUTT, Ability.PRESS_NO, Ability.CIGAR, Ability.RUBEN_ABILITY);
         map.get(17).setAbilities(Ability.KICK, Ability.STEAL_PASSWORD, Ability.COFFEE, Ability.SARA_ABILITY);
         map.get(18).setAbilities(Ability.SCRATCH, Ability.CHANGE_BACKGROUND, Ability.CABEÇOS, Ability.XAVIER_ABILITY);
+    }
+
+    private void setPokadetsMaxHP(Map<Integer, Pokadet> map){
+        for (int i = 1; i < map.size(); i++) {
+            map.get(1).setMaxHP(map.get(1).getHp());
+        }
     }
 
     public static void setPokadetsStats(Map<Integer, Pokadet> map) {
