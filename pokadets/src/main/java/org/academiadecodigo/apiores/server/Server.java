@@ -24,6 +24,7 @@ public class Server {
     private int playerId = 0;
     private String ability="";
 
+
     public Server() {
         socketMap = new HashMap<>();
         playerOption = new HashMap<>();
@@ -62,7 +63,13 @@ public class Server {
 
             socketMap.put(clientSocket, playerId);
 
-            beggining(out, prompt, clientSocket);
+            if(!beggining(out, prompt, clientSocket)){
+                if(playerOption.size()==2){
+                    playerOption.remove(socketMap.get(clientSocket));
+                }
+                playerId=socketMap.remove(clientSocket)-1;
+                return;
+            }
 
 
             MenuInputScanner abilities;
@@ -72,6 +79,8 @@ public class Server {
                     notifyAll();
                     out.println(Messages.WAITING_OPONENT);
                     wait();
+
+
 
                     if(!ability.equals("")) {
                         out.println(Messages.ABILITY_USED_ENEMY + ability);
@@ -92,6 +101,7 @@ public class Server {
                     if(pokadetController.isGameOver()){
                         out.println(Messages.WINNER);
                     }
+
                 }
             }
 
@@ -151,7 +161,7 @@ public class Server {
         int playerPick = prompt.getUserInput(menuInputScanner);
 
         while (playerOption.containsValue(playerPick)) {
-            out.println("Pokadet already picked");
+            out.println(Messages.POKADET_PICKED);
             playerPick = prompt.getUserInput(menuInputScanner);
         }
 
@@ -183,7 +193,7 @@ public class Server {
 
     }
 
-    private void beggining(PrintStream out, Prompt prompt, Socket clientSocket){
+    private boolean beggining(PrintStream out, Prompt prompt, Socket clientSocket){
 
         // welcome message
         MenuInputScanner menuInputScanner0 = new MenuInputScanner(Messages.OPEN_MENU);
@@ -198,7 +208,8 @@ public class Server {
         // if quit Game
         if (playerPick0 ==2){
             out.println(Messages.QUIT);
-            System.exit(0);
+            close(clientSocket, out);
+            return false;
         }
 
         // Method Checking player Picked
@@ -220,7 +231,17 @@ public class Server {
         setPlayers();
 
         chooseTrainer(prompt,clientSocket);
+        return true;
+    }
 
+    private void close(Socket clientSocket, PrintStream out){
+
+        try {
+            out.close();
+            clientSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void gameOver(Prompt prompt, Socket clientSocket) {
