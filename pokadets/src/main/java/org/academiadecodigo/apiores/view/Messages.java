@@ -9,14 +9,20 @@ import java.util.Map;
 public class Messages {
 
     public final static String LINE = "wwww wwww wwww wwww wwww wwww wwww wwww wwww wwww wwww wwww wwww\n";
+    public final static String LINE2 = "\n\noooooooooooooooooooooooooooo\n\n";
+    public final static String CURRENTLINE = LINE2;
+
     public final static String[] OPEN_MENU = {"Start", "Quit"};
-    public final static String ABILITY_USED_YOU= "\nUsed ability: ";
+    public final static String ABILITY_USED_YOU= CURRENTLINE + "Used ability: ";
     public final static String ABILITY_USED_ENEMY="\nEnemy used ability: ";
-    public final static String CHOOSE_TRAINER = "Choose your Pokadet Trainer!";
+    public final static String CHOOSE_TRAINER = CURRENTLINE+"Choose your Pokadet Trainer!";
     public final static String CONTINUE = "\nContinue?";
     public final static String WAITING_PLAYER = "\nWaiting for an opponent to connect...";
+    public final static String CHOOSE_PLAYER = CURRENTLINE+"Choose your Pokadet!";
+    public final static String POKADET_PICKED = CURRENTLINE + "Pokadet already picked";
     public final static String WAITING_OPONENT = "\nWaiting for opponent to pick";
-    public final static String ABILITY_TO_USE = "\n\nWhat ability do you want to use?";
+
+    public final static String ABILITY_TO_USE = "\nWhat ability do you want to use?";
     public final static String SELECT_OPTION = "Select your option";
     public final static String QUIT = "Quiting Game...";
     public final static String[] SELECT_POKADET = {"Yes", "Return"};
@@ -30,40 +36,38 @@ public class Messages {
             "██║     ╚██████╔╝██║  ██╗██║  ██║██████╔╝███████╗   ██║   ███████║\n" +
             "╚═╝      ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝   ╚═╝   ╚══════╝\n";
 
-    public final static String CHOOSE_PLAYER = LINE+"\nChoose your Pokadet!";
+
 
     public final static String LOOSER = ("\n" +
-            "       ██╗      ██████╗ ███████╗████████╗      \n" +
-            "       ██║     ██╔═══██╗██╔════╝╚══██╔══╝      \n" +
-            "       ██║     ██║   ██║███████╗   ██║         \n" +
-            "       ██║     ██║   ██║╚════██║   ██║         \n" +
-            "       ███████╗╚██████╔╝███████║   ██║██╗██╗██╗\n" +
-            " You   ╚══════╝ ╚═════╝ ╚══════╝   ╚═╝╚═╝╚═╝╚═╝   restart?\n" +
-            "                                        ");
+            "██╗   ██╗ ██████╗ ██╗   ██╗    ██╗      ██████╗ ███████╗████████╗      \n" +
+            "╚██╗ ██╔╝██╔═══██╗██║   ██║    ██║     ██╔═══██╗██╔════╝╚══██╔══╝      \n" +
+            " ╚████╔╝ ██║   ██║██║   ██║    ██║     ██║   ██║███████╗   ██║         \n" +
+            "  ╚██╔╝  ██║   ██║██║   ██║    ██║     ██║   ██║╚════██║   ██║         \n" +
+            "   ██║   ╚██████╔╝╚██████╔╝    ███████╗╚██████╔╝███████║   ██║██╗██╗██╗\n" +
+            "   ╚═╝    ╚═════╝  ╚═════╝     ╚══════╝ ╚═════╝ ╚══════╝   ╚═╝╚═╝╚═╝╚═╝\n");
 
     private static String winnerAscci = "";
 
-    public final static String WINNER = winnerAscci + ("\n" +
-            "       ██╗    ██╗ ██████╗ ███╗   ██╗██╗\n" +
-            "       ██║    ██║██╔═══██╗████╗  ██║██║\n" +
-            "       ██║ █╗ ██║██║   ██║██╔██╗ ██║██║\n" +
-            "       ██║███╗██║██║   ██║██║╚██╗██║╚═╝\n" +
-            "       ╚███╔███╔╝╚██████╔╝██║ ╚████║██╗\n" +
-            "        ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═══╝╚═╝ \n" +
-            "                                ");
+    public final static String WINNER = winnerAscci + ("\n+" +
+            "██╗   ██╗ ██████╗ ██╗   ██╗    ██╗    ██╗ ██████╗ ███╗   ██╗██╗\n" +
+            "╚██╗ ██╔╝██╔═══██╗██║   ██║    ██║    ██║██╔═══██╗████╗  ██║██║\n" +
+            " ╚████╔╝ ██║   ██║██║   ██║    ██║ █╗ ██║██║   ██║██╔██╗ ██║██║\n" +
+            "  ╚██╔╝  ██║   ██║██║   ██║    ██║███╗██║██║   ██║██║╚██╗██║╚═╝\n" +
+            "   ██║   ╚██████╔╝╚██████╔╝    ╚███╔███╔╝╚██████╔╝██║ ╚████║██╗\n" +
+            "   ╚═╝    ╚═════╝  ╚═════╝      ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═══╝╚═╝\n" +
+            "                                                               ");
 
     private static String player1Ascci = "";
 
     private static String player2Ascci = "";
 
-    public final static String ASCCI_VS_ASCCI = player1Ascci + "   " +
-            ":::     :::  ::::::::      \n" +
-            ":+:     :+: :+:    :+:     \n" +
-            "+:+     +:+ +:+            \n" +
-            "+#+     +:+ +#++:++#++     \n" +
-            " +#+   +#+         +#+     \n" +
-            "  #+#+#+#   #+#    #+# #+# \n" +
-            "    ###      ########  ### " + player2Ascci;
+    public final static String ASCCI_VS_ASCCI = player1Ascci + "      " +
+            "██╗   ██╗███████╗\n" +
+            "██║   ██║██╔════╝\n" +
+            "██║   ██║███████╗\n" +
+            "╚██╗ ██╔╝╚════██║\n" +
+            " ╚████╔╝ ███████║\n" +
+            "  ╚═══╝  ╚══════╝      " + player2Ascci;
 
     //ascii generator: https://manytools.org/hacker-tools/ascii-banner/
     //style: banner, font: ANSI Shadow
@@ -112,17 +116,17 @@ public class Messages {
             skills += s + " | ";
         }
 
-        return "Current Pokadet: " + currentPokadet.getName() + "\n\n" +
+        return Messages.CURRENTLINE + "Current Pokadet: " + currentPokadet.getName() + "\n\n" +
                 "Player Abilities: " + skills + "\n\n" +
                 "Defense: " + currentPokadet.getDefense() + "\n" +
                 "Attack: " + currentPokadet.getAttack() + "\n" +
                 "Critical strike chance: " + currentPokadet.getCritChance() + "\n"+
-                "HP: " + currentPokadet.getHp() + "\n";
+                "HP: " + currentPokadet.getHp() + Messages.CURRENTLINE;
     }
 
     public static String getStats(Pokadet currentPokadet, Pokadet targetPokadet) {
 
-        return "\nEnemy Pokadet: "+targetPokadet.getName()+ "\n\nYour Pokadet: " + currentPokadet.getName() +
+        return CURRENTLINE +"Enemy Pokadet: "+targetPokadet.getName()+ "\n\nYour Pokadet: " + currentPokadet.getName() +
                 "\n\nDefense: " + currentPokadet.getDefense() + "\n" +
                 "Attack: " + currentPokadet.getAttack() + "\n" +
                 "Critical strike chance: " + currentPokadet.getCritChance() + "\n"+
