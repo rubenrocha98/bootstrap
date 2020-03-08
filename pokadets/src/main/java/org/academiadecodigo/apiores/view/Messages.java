@@ -9,7 +9,7 @@ import java.util.Map;
 public class Messages {
 
     public final static String LINE = "wwww wwww wwww wwww wwww wwww wwww wwww wwww wwww wwww wwww wwww\n";
-    public final static String LINE2 = "\n\noooooooooooooooooooooooooooo\n\n";
+    public final static String LINE2 = "\noooooooooooooooooooooooooooooooooooooo\n\n";
     public final static String CURRENTLINE = LINE2;
 
     public final static String[] OPEN_MENU = {"Start", "Quit"};
@@ -19,7 +19,7 @@ public class Messages {
     public final static String CONTINUE = "\nContinue?";
     public final static String WAITING_PLAYER = "\nWaiting for an opponent to connect...";
     public final static String CHOOSE_PLAYER = CURRENTLINE+"Choose your Pokadet!";
-    public final static String POKADET_PICKED = CURRENTLINE + "Pokadet already picked";
+    public final static String POKADET_PICKED = CURRENTLINE + "\nPokadet already picked";
     public final static String WAITING_OPONENT = "\nWaiting for opponent to pick";
 
     public final static String ABILITY_TO_USE = "\nWhat ability do you want to use?";
@@ -126,11 +126,8 @@ public class Messages {
 
     public static String getStats(Pokadet currentPokadet, Pokadet targetPokadet) {
 
-        return CURRENTLINE +"Enemy Pokadet: "+targetPokadet.getName()+ "\n\nYour Pokadet: " + currentPokadet.getName() +
-                "\n\nDefense: " + currentPokadet.getDefense() + "\n" +
-                "Attack: " + currentPokadet.getAttack() + "\n" +
-                "Critical strike chance: " + currentPokadet.getCritChance() + "\n"+
-                "Your HP: " + currentPokadet.getHp() + "    #####    Enemy HP: " + targetPokadet.getHp();
+        return CURRENTLINE +"Your HP: " + currentPokadet.getHp() + "    #####    Enemy HP: " +
+                targetPokadet.getHp()+"\n";
     }
 
 
