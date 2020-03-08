@@ -68,24 +68,24 @@ public class Bootstrap {
     }
 
     public static void addPokeAbilities(Map<Integer,Pokadet> map){
-        map.get(1).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.CIGAR, Ability.ANDRE_ABILITY);
-        map.get(2).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.BERNARDO_ABILITY);
-        map.get(3).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.BRUNO_ABILITY);
-        map.get(4).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.CLAUDIA_ABILITY);
-        map.get(5).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.DUTRA_ABILITY);
-        map.get(6).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.EVANDRO_ABILITY);
-        map.get(7).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.FABIO_ABILITY);
-        map.get(8).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.FRANCISCO_ABILITY);
-        map.get(9).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.GUSTAVO_ABILITY);
-        map.get(10).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.HUGO_ABILITY);
-        map.get(11).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.JAIME_ABILITY);
-        map.get(12).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.JULIO_ABILITY);
-        map.get(13).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.MIGUEL_ABILITY);
-        map.get(14).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.PAULO_ABILITY);
-        map.get(15).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.PEDRO_ABILITY);
-        map.get(16).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.RUBEN_ABILITY);
-        map.get(17).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.SARA_ABILITY);
-        map.get(18).setAbilities(Ability.HEADBUTT, Ability.UPPERCUT, Ability.THROW_CHAIR, Ability.XAVIER_ABILITY);
+        map.get(1).setAbilities(Ability.KICK, Ability.THROW_CHAIR, Ability.CABEÇOS, Ability.ANDRE_ABILITY);
+        map.get(2).setAbilities(Ability.SCRATCH, Ability.THROW_RAT, Ability.BEER, Ability.BERNARDO_ABILITY);
+        map.get(3).setAbilities(Ability.UPPERCUT, Ability.TROLL_OPPONENT, Ability.CIGAR, Ability.BRUNO_ABILITY);
+        map.get(4).setAbilities(Ability.HEADBUTT, Ability.PRESS_NO, Ability.LAUGH, Ability.CLAUDIA_ABILITY);
+        map.get(5).setAbilities(Ability.KICK, Ability.STEAL_PASSWORD, Ability.BEER, Ability.DUTRA_ABILITY);
+        map.get(6).setAbilities(Ability.SCRATCH, Ability.PRESS_NO, Ability.LAUGH, Ability.EVANDRO_ABILITY);
+        map.get(7).setAbilities(Ability.HEADBUTT, Ability.TROLL_MC, Ability.BEER, Ability.FABIO_ABILITY);
+        map.get(8).setAbilities(Ability.HEADBUTT, Ability.CHANGE_BACKGROUND, Ability.FALL_ASLEEP, Ability.FRANCISCO_ABILITY);
+        map.get(9).setAbilities(Ability.KICK, Ability.TROLL_OPPONENT, Ability.CABEÇOS, Ability.GUSTAVO_ABILITY);
+        map.get(10).setAbilities(Ability.SCRATCH, Ability.THROW_CHAIR, Ability.FALL_ASLEEP, Ability.HUGO_ABILITY);
+        map.get(11).setAbilities(Ability.UPPERCUT, Ability.TROLL_OPPONENT, Ability.COFFEE, Ability.JAIME_ABILITY);
+        map.get(12).setAbilities(Ability.HEADBUTT, Ability.TROLL_OPPONENT, Ability.CABEÇOS, Ability.JULIO_ABILITY);
+        map.get(13).setAbilities(Ability.KICK, Ability.THROW_RAT, Ability.LAUGH, Ability.MIGUEL_ABILITY);
+        map.get(14).setAbilities(Ability.SCRATCH, Ability.THROW_CHAIR, Ability.LAUGH, Ability.PAULO_ABILITY);
+        map.get(15).setAbilities(Ability.UPPERCUT, Ability.PRESS_NO, Ability.FALL_ASLEEP, Ability.PEDRO_ABILITY);
+        map.get(16).setAbilities(Ability.HEADBUTT, Ability.PRESS_NO, Ability.CIGAR, Ability.RUBEN_ABILITY);
+        map.get(17).setAbilities(Ability.KICK, Ability.STEAL_PASSWORD, Ability.COFFEE, Ability.SARA_ABILITY);
+        map.get(18).setAbilities(Ability.SCRATCH, Ability.CHANGE_BACKGROUND, Ability.CABEÇOS, Ability.XAVIER_ABILITY);
     }
 
     public static void setPokadetsStats(Map<Integer, Pokadet> map) {

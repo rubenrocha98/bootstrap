@@ -8,7 +8,7 @@ public enum Ability {
     HEADBUTT (Target.ENEMY, 11, "Headbutt (damage: 11)"),
     THROW_CHAIR (Target.ENEMY, 11, "Throw chair (damage: 11)"),
     UPPERCUT (Target.ENEMY, 9, "Uppercut (damage: 9)"),
-    HEAL (Target.SELF, 6, "Heal (heal: 6)"),
+    LAUGH(Target.SELF, 6, "Laugh (heal: 6)"),
     THROW_RAT (Target.ENEMY, 11,"Throw Rat (damage: 11)"),
     CHANGE_BACKGROUND(Target.ENEMY, 7,"Change Background (damage: 7)"),
     STEAL_PASSWORD(Target.ENEMY,10,"Steal Password (damage: 10)"),
@@ -17,14 +17,16 @@ public enum Ability {
     COFFEE(Target.SELF, 5, "Coffee break (heal: 5)"),
     BEER(Target.SELF,6, "Drink a cold one (heal: 6)"),
     TROLL_OPPONENT(Target.ENEMY,8,"Troll your opponent (damage: 8)"),
-    TROLL_MC(Target.ENEMY,5,"Troll enemy trainer (damage: 5)"),
+    TROLL_MC(Target.ENEMY,11,"Troll enemy MC (damage: 11)"),
+    CABEÇOS(Target.SELF, 7, "Smoke a cabeço (heal: 7)"),
+    PRESS_NO(Target.ENEMY, 7, "Press NO button (damage: 7)"),
 
 
 
 
     //Special abilities
     GUSTAVO_ABILITY (Target.ENEMY, 40, "THROW CHINELOS"),
-    SARA_ABILITY (Target.ENEMY, 40, "THROW SQUARE ROOT"),
+    SARA_ABILITY (Target.SELF, 50, "PERFECT STORYTELLING"),
     RUBEN_ABILITY (Target.ENEMY, 40, "INTENSIVE QUESTIONS"),
     FABIO_ABILITY (Target.SELF, 50, "BUY BEER"),
     BRUNO_ABILITY (Target.ENEMY, 40, "SENHOR"),
