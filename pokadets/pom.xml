@@ -31,7 +31,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.academiadecodigo.apiores.javabank.App</mainClass>
+                            <mainClass>org.academiadecodigo.apiores.Main</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
