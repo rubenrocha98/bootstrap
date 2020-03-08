@@ -21,6 +21,10 @@ public class PokadetService {
         Ability ability = currentPokadet.getAbility(abilityPick);
 
         if (ability.getTarget().equals(Target.SELF)) {
+            if(currentPokadet.getHp() + ability.getAmount() > currentPokadet.getMaxHP()){
+                currentPokadet.setHp(currentPokadet.getMaxHP());
+                return ability.getName();
+            }
             currentPokadet.setHp(currentPokadet.getHp() + ability.getAmount());
             return ability.getName();
         }

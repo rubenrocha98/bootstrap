@@ -99,4 +99,8 @@ public abstract class AbstractPokadet implements Pokadet {
     public void setMaxHp(int maxHP){
         this.maxHP = maxHP;
     }
+
+    public int getMaxHP() {
+        return maxHP;
+    }
 }
