@@ -155,15 +155,16 @@ public class Server {
 
     }
 
-    private int checkPlayers(Prompt prompt, MenuInputScanner menuInputScanner, PrintStream out){
+    private int checkPlayers(Prompt prompt, MenuInputScanner menuInputScanner, PrintStream out,Socket clientSocket){
 
         //Player Pick
         int playerPick = prompt.getUserInput(menuInputScanner);
 
-        while (playerOption.containsValue(playerPick)) {
-            out.println(Messages.POKADET_PICKED);
-            playerPick = prompt.getUserInput(menuInputScanner);
-        }
+
+
+
+
+
 
         String pokadetStats = pokadetController.getPokadetInfo(playerPick); // pedir stats ao controller;
 
@@ -172,10 +173,15 @@ public class Server {
         showPokadetStatsMenu.setMessage(pokadetStats + Messages.CONTINUE);
 
         if (prompt.getUserInput(showPokadetStatsMenu) == 2) {
-
-            playerPick = checkPlayers(prompt,menuInputScanner,out);
+            playerOption.remove(socketMap.get(clientSocket));
+            return checkPlayers(prompt,menuInputScanner,out,clientSocket);
         }
 
+        if(playerOption.containsValue(playerPick)) {
+            out.println(Messages.POKADET_PICKED);
+            return checkPlayers(prompt,menuInputScanner,out,clientSocket);
+        }
+        playerOption.put(socketMap.get(clientSocket),playerPick);
         return playerPick;
 
     }
@@ -213,21 +219,18 @@ public class Server {
         }
 
         // Method Checking player Picked
-        int playerPick = checkPlayers(prompt, menuInputScanner, out);
+        checkPlayers(prompt, menuInputScanner, out,clientSocket);
 
         // insert player selected on map
-        playerOption.put(socketMap.get(clientSocket), playerPick);
 
         if(playerOption.size()<2){
             out.println(Messages.WAITING_PLAYER);
-            System.out.println("server: size"+playerOption.size());
         }
 
-        System.out.println("player option size " + playerOption.size());
         while(playerOption.size() <2){
             System.out.print("");
         }
-
+        ///////////////////////////////////if()
         setPlayers();
 
         chooseTrainer(prompt,clientSocket);
@@ -247,7 +250,7 @@ public class Server {
     private void gameOver(Prompt prompt, Socket clientSocket) {
 
         playerId = 0;
-
+        pokadetController.resetGame();
         MenuInputScanner finalMenu = new MenuInputScanner(Messages.RESTART_MENU);
         finalMenu.setMessage(Messages.RESTART);
 
@@ -259,10 +262,9 @@ public class Server {
                 socketMap = new HashMap<>();
                 playerOption = new HashMap<>();
             }
-
-            pokadetController.resetGame();
             serve(clientSocket);
         }
+
     }
 
     private class ServerThread implements Runnable {

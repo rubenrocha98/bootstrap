@@ -126,7 +126,9 @@ public class Messages {
 
     public static String getStats(Pokadet currentPokadet, Pokadet targetPokadet) {
 
-        return CURRENTLINE +"Your HP: " + currentPokadet.getHp() + "    #####    Enemy HP: " +
+        return CURRENTLINE + "Your Pokadet - "+currentPokadet.getName()+
+                "     #####     Enemy Pokadet - "+targetPokadet.getName()+
+                "\n\nYour HP: " + currentPokadet.getHp() + "    #####    Enemy HP: " +
                 targetPokadet.getHp()+"\n";
     }
 

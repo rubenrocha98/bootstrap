@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class PokadetController {
 
-    private Pokadet winner;
+
     private PokadetService pokadetService;
     private Map<Integer,Pokadet> pokadetMap;
     private boolean gameOver;
@@ -43,9 +43,6 @@ public class PokadetController {
     }
 
 
-    public void setWinner(Pokadet winner) {
-        this.winner = winner;
-    }
 
     public void setPokadetService(PokadetService pokadetService) {
         this.pokadetService = pokadetService;
@@ -69,9 +66,6 @@ public class PokadetController {
         return gameOver;
     }
 
-    public Pokadet getWinner() {
-        return winner;
-    }
 
     public String[] getPokadetOptions(){
         return Messages.pokadetMenu(pokadetMap);
@@ -101,9 +95,6 @@ public class PokadetController {
         return pokadetService.getPokadetInfo(pokadet);
     }
 
-    public String getInfo(){
-        return pokadetService.getInfo();
-    }
 
     public String getDoubleInfo(){
         return pokadetService.getDoubleInfo();
@@ -118,8 +109,6 @@ public class PokadetController {
         gameOver = false;
         Bootstrap.addPokeAbilities(pokadetMap);
     }
-    public String getPokadetName(int pokadetId){
-        return pokadetMap.get(pokadetId).getName();
-    }
+
 
 }
