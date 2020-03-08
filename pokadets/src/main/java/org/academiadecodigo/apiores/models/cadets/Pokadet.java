@@ -33,4 +33,8 @@ public interface Pokadet {
     void setCritChance(int critChance);
 
     void setStats(int hp, int attack, int defense, int critChance);
+
+    void setMaxHP(int maxHP);
+
+    int getMaxHP();
 }

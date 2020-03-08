@@ -2,26 +2,28 @@ package org.academiadecodigo.apiores.models;
 
 public enum Ability {
 
-    //basic abilities
+    //Basic abilities
     KICK (Target.ENEMY, 8, "Kick (damage: 8)"),
-    SCRATCH (Target.ENEMY, 7, "Scratch (damage: 7)"),
-    HEADBUTT (Target.ENEMY, 11, "Headbutt (damage: 11)"),
-    THROW_CHAIR (Target.ENEMY, 11, "Throw chair (damage: 11)"),
-    UPPERCUT (Target.ENEMY, 9, "Uppercut (damage: 9)"),
+    SCRATCH (Target.ENEMY, 8, "Scratch (damage: 8)"),
+    HEADBUTT (Target.ENEMY, 8, "Headbutt (damage: 8)"),
+    UPPERCUT (Target.ENEMY, 8, "Uppercut (damage: 8)"),
+
+    //Attack abilities
+    THROW_CHAIR (Target.ENEMY, 5, "Throw chair (damage: 6 - 10)"),
+    PRESS_NO(Target.ENEMY, 5, "Press NO button (damage: 6 - 10)"),
+    THROW_RAT (Target.ENEMY, 5,"Throw Rat (damage: 6 - 10)"),
+    CHANGE_BACKGROUND(Target.ENEMY, 5,"Change Background (damage: 6 - 10)"),
+    STEAL_PASSWORD(Target.ENEMY,5,"Steal Password (damage: 6 - 10)"),
+    TROLL_OPPONENT(Target.ENEMY,5,"Troll your opponent (damage: 6 - 10)"),
+    TROLL_MC(Target.ENEMY,5,"Troll enemy MC (damage: 6 - 10)"),
+
+    //Heal abilities
     LAUGH(Target.SELF, 6, "Laugh (heal: 6)"),
-    THROW_RAT (Target.ENEMY, 11,"Throw Rat (damage: 11)"),
-    CHANGE_BACKGROUND(Target.ENEMY, 7,"Change Background (damage: 7)"),
-    STEAL_PASSWORD(Target.ENEMY,10,"Steal Password (damage: 10)"),
     FALL_ASLEEP(Target.SELF,7,"Fall asleep during lecture (heal: 7)"),
     CIGAR(Target.SELF,5,"Cigarette break (heal: 5)"),
     COFFEE(Target.SELF, 5, "Coffee break (heal: 5)"),
     BEER(Target.SELF,6, "Drink a cold one (heal: 6)"),
-    TROLL_OPPONENT(Target.ENEMY,8,"Troll your opponent (damage: 8)"),
-    TROLL_MC(Target.ENEMY,11,"Troll enemy MC (damage: 11)"),
     CABEÇOS(Target.SELF, 7, "Smoke a cabeço (heal: 7)"),
-    PRESS_NO(Target.ENEMY, 7, "Press NO button (damage: 7)"),
-
-
 
 
     //Special abilities

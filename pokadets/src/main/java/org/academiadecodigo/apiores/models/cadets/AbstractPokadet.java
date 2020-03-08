@@ -12,6 +12,7 @@ public abstract class AbstractPokadet implements Pokadet {
     protected int attack;
     protected int defense;
     protected int critChance;
+    protected int maxHP;
 
     protected Map<Integer, Ability> abilities;
 
@@ -93,5 +94,13 @@ public abstract class AbstractPokadet implements Pokadet {
         this.attack = attack;
         this.defense = defense;
         this.critChance = critChance;
+    }
+
+    public void setMaxHP(int maxHP){
+        this.maxHP = maxHP;
+    }
+
+    public int getMaxHP() {
+        return maxHP;
     }
 }

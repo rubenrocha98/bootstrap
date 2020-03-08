@@ -8,6 +8,8 @@ import org.academiadecodigo.apiores.models.trainers.BoostType;
 import org.academiadecodigo.apiores.models.trainers.Trainer;
 import org.academiadecodigo.apiores.view.Messages;
 
+import java.sql.SQLOutput;
+
 public class PokadetService {
 
     private Pokadet pokadet1;
@@ -19,13 +21,20 @@ public class PokadetService {
 
     public String hit(int abilityPick) {
         Ability ability = currentPokadet.getAbility(abilityPick);
-
         if (ability.getTarget().equals(Target.SELF)) {
+            if(currentPokadet.getHp() + ability.getAmount() > currentPokadet.getMaxHP()){
+                currentPokadet.setHp(currentPokadet.getMaxHP());
+                return ability.getName();
+            }
             currentPokadet.setHp(currentPokadet.getHp() + ability.getAmount());
             return ability.getName();
         }
         chooseTargetPokadet();
         int damage = attack(ability.getAmount());
+        if(abilityPick == 2){
+            damage += attackRandom();
+            System.out.println("random: " + damage);
+        }
         return ability.getName() + " hit for "+damage+"hp\n";
     }
 
@@ -49,6 +58,10 @@ public class PokadetService {
     private boolean checkCrit(){
         int random = ((int) (Math.ceil(Math.random()*100)));
         return random <= currentPokadet.getCritChance();
+    }
+
+    private int attackRandom(){
+        return (int) (Math.ceil(Math.random()*5));
     }
 
     private void chooseTargetPokadet() {
@@ -77,7 +90,8 @@ public class PokadetService {
         int amount = trainer.getAmount();
         switch (boost){
             case HP:
-                currentPokadet.setHp(currentPokadet.getHp() + amount);
+                currentPokadet.setMaxHP(currentPokadet.getMaxHP() + amount);
+                currentPokadet.setHp(currentPokadet.getMaxHP());
                 break;
             case ATTACK:
                 currentPokadet.setAttack(currentPokadet.getAttack() + amount);
