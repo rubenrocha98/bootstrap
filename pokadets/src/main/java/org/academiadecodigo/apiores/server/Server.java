@@ -22,6 +22,7 @@ public class Server {
     private HashMap<Integer, Integer> playerOption; //currentPlayer , pokadet choice
     private HashMap<Socket, Integer> socketMap; //clientSocker , currentPlayer
     private int playerId = 0;
+    private String ability="";
 
     public Server() {
         socketMap = new HashMap<>();
@@ -72,17 +73,25 @@ public class Server {
                     out.println(Messages.WAITING_OPONENT);
                     wait();
 
+                    if(!ability.equals("")) {
+                        out.println(Messages.ABILITY_USED_ENEMY + ability);
+                    }
+
                     if(pokadetController.isGameOver()){
+                        out.println(Messages.LOOSER);
                         break;
                     }
 
                     abilities = new MenuInputScanner(pokadetController.getAbilitiesOptions(socketMap.get(clientSocket)));
-                    abilities.setMessage(pokadetController.getInfo()+Messages.ABILITY_TO_USE);
+                    abilities.setMessage(pokadetController.getDoubleInfo()+Messages.ABILITY_TO_USE);
                     int abilityPick = prompt.getUserInput(abilities);
 
-                    pokadetController.init(socketMap.get(clientSocket), abilityPick);
-
+                    ability = pokadetController.init(socketMap.get(clientSocket), abilityPick);
+                    out.println(Messages.ABILITY_USED_YOU+ability);
                     notifyAll();
+                    if(pokadetController.isGameOver()){
+                        out.println(Messages.WINNER);
+                    }
                 }
             }
 

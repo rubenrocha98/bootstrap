@@ -24,19 +24,21 @@ public class PokadetController {
         gameOver = false;
     }
 
-    public void init(int currentPlayer, int abilityPick){
+    public String init(int currentPlayer, int abilityPick){
         if(currentPlayer==1) {
             pokadetService.setCurrentPokadet(pokadetMap.get(pokadetId1));
         }else {
             pokadetService.setCurrentPokadet(pokadetMap.get(pokadetId2));
         }
 
-        pokadetService.hit(abilityPick);
+        String ability = pokadetService.hit(abilityPick);
 
 
         if(!pokadetService.verifyAlive()){
             gameOver = true;
+            return ability ;
         }
+        return ability;
 
     }
 
@@ -115,6 +117,9 @@ public class PokadetController {
         Bootstrap.setPokadetsStats(pokadetMap);
         gameOver = false;
         Bootstrap.addPokeAbilities(pokadetMap);
+    }
+    public String getPokadetName(int pokadetId){
+        return pokadetMap.get(pokadetId).getName();
     }
 
 }
