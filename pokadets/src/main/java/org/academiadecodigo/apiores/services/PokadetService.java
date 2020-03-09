@@ -42,7 +42,7 @@ public class PokadetService {
 
         damage = attack(damage);
 
-        return ability.getName() + Messages.YELLOW_BOLD + crit + Messages.ANSI_RESET + " hit for " + Messages.ANSI_RED + damage + "hp" + Messages.ANSI_RESET+"\n";
+        return ability.getName() + Messages.YELLOW_BOLD + crit + Messages.ANSI_RESET + "hit for " + Messages.ANSI_RED + damage + "hp" + Messages.ANSI_RESET+"\n";
     }
 
     public String getCurrentPokadetHp(){
