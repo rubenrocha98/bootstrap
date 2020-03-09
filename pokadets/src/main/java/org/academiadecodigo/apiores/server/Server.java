@@ -108,9 +108,10 @@ public class Server {
                         out.println(Messages.WINNER);
                     }
 
-                    Thread.sleep(500);
+                    Thread.sleep(1000);
                 }
             }
+
             Thread.sleep(5000);
             gameOver(prompt, clientSocket);
 

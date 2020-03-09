@@ -41,6 +41,7 @@ public class Player {
 
             String choice;
             Sound sound = new Sound(" resources/pokemon.wav");
+            sound.setLoop(20);
             sound.play(true);
             while (clientSocket.isBound()) {
 
