@@ -60,9 +60,11 @@ public class Player {
     }
 
     private void readFromServer(BufferedReader in) throws IOException {
-        String message="";
-        while (clientSocket.isBound() && (message=in.readLine())!=null) {
-            System.out.println(message);
+        int message;
+        while (clientSocket.isBound() && (message=in.read())!= -1) {
+            char a = (char) message;
+
+            System.out.print(a);
         }
         System.exit(0);
     }
