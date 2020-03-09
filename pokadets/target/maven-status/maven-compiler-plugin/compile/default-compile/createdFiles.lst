@@ -4,10 +4,8 @@ org/academiadecodigo/apiores/models/cadets/Bruno.class
 org/academiadecodigo/apiores/server/Server.class
 org/academiadecodigo/apiores/models/cadets/Ruben.class
 org/academiadecodigo/apiores/models/cadets/Claudia.class
-org/academiadecodigo/apiores/restart/Restart.class
 org/academiadecodigo/apiores/services/PokadetService$1.class
 org/academiadecodigo/apiores/models/cadets/Miguel.class
-org/academiadecodigo/apiores/server/PlayerManager.class
 org/academiadecodigo/apiores/models/cadets/Julio.class
 org/academiadecodigo/apiores/models/trainers/Trainer.class
 org/academiadecodigo/apiores/models/cadets/Evandro.class
